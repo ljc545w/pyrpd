@@ -18,7 +18,7 @@ class WeChat(pyrpd.PyRProcess):
         # 构造远程数据
         bdata = len(bdata).to_bytes(4,'little') + bdata
         # 写入远程数据
-        r_param = self.write(bdata,len(bdata))
+        r_param = self.write(bdata)
         # 调用远程接口函数
         resp_address = self.call(module_name,recv_func_name,r_param.id())
         if resp_address == 0:
