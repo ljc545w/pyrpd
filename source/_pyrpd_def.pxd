@@ -36,4 +36,5 @@ cdef extern from "rpd.h":
         DWORD call(const wchar_t* module_name, const wchar_t* func_name,ULONGLONG param)
         const unsigned char* read(DWORD address,int len)
         void free(unsigned char* data)
+        DWORD last_error()
         bool m_init

@@ -38,12 +38,12 @@
         "libraries": [
             "Advapi32"
         ],
-        "name": "_pyrpd",
+        "name": "pyrpd._pyrpd",
         "sources": [
-            "./src/_pyrpd.pyx"
+            "./source/_pyrpd.pyx"
         ]
     },
-    "module_name": "_pyrpd"
+    "module_name": "pyrpd._pyrpd"
 }
 END: Cython Metadata */
 
@@ -665,8 +665,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE___pyrpd
-#define __PYX_HAVE_API___pyrpd
+#define __PYX_HAVE__pyrpd___pyrpd
+#define __PYX_HAVE_API__pyrpd___pyrpd
 /* Early includes */
 #include <stddef.h>
 #include "ios"
@@ -901,7 +901,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "stringsource",
-  "src\\_pyrpd.pyx",
+  "source\\_pyrpd.pyx",
   "type.pxd",
 };
 
@@ -924,8 +924,8 @@ typedef unsigned int __pyx_t_10_pyrpd_def_DWORD;
 typedef unsigned PY_LONG_LONG __pyx_t_10_pyrpd_def_ULONGLONG;
 
 /*--- Type declarations ---*/
-struct __pyx_obj_6_pyrpd_PyRData;
-struct __pyx_obj_6_pyrpd_PyRProcess;
+struct __pyx_obj_5pyrpd_6_pyrpd_PyRData;
+struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess;
 
 /* "_pyrpd_def.pxd":11
  * ctypedef unsigned int DWORD
@@ -936,32 +936,40 @@ struct __pyx_obj_6_pyrpd_PyRProcess;
  */
 typedef void *__pyx_t_10_pyrpd_def_HANDLE;
 
-/* "_pyrpd.pyx":48
+/* "source/_pyrpd.pyx":48
  *     return core_def.kill_handles(pid,handles)
  * 
  * cdef class PyRData:             # <<<<<<<<<<<<<<
  *     cdef RData* _rdata
  *     def __cinit__(self,unsigned int hid,unsigned char* data,unsigned int size):
  */
-struct __pyx_obj_6_pyrpd_PyRData {
+struct __pyx_obj_5pyrpd_6_pyrpd_PyRData {
   PyObject_HEAD
   RData *_rdata;
 };
 
 
-/* "_pyrpd.pyx":62
+/* "source/_pyrpd.pyx":62
  *         del self._rdata
  * 
  * cdef class PyRProcess:             # <<<<<<<<<<<<<<
  *     cdef RProcess* _rp
  *     cdef int _pid
  */
-struct __pyx_obj_6_pyrpd_PyRProcess {
+struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess {
   PyObject_HEAD
+  struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *__pyx_vtab;
   RProcess *_rp;
   int _pid;
+  unsigned int _err_code;
 };
 
+
+
+struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess {
+  PyObject *(*set_err_code)(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *);
+};
+static struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *__pyx_vtabptr_5pyrpd_6_pyrpd_PyRProcess;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -1167,6 +1175,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, P
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
 
+/* SetVTable.proto */
+static int __Pyx_SetVtable(PyObject *dict, void *vtable);
+
 /* TypeImport.proto */
 #ifndef __PYX_HAVE_RT_ImportType_proto
 #define __PYX_HAVE_RT_ImportType_proto
@@ -1317,6 +1328,7 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
+static PyObject *__pyx_f_5pyrpd_6_pyrpd_10PyRProcess_set_err_code(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto*/
 
 /* Module declarations from 'libc.stddef' */
 
@@ -1345,9 +1357,9 @@ static PyTypeObject *__pyx_ptype_7cpython_4type_type = 0;
 
 /* Module declarations from 'cpython.ref' */
 
-/* Module declarations from '_pyrpd' */
-static PyTypeObject *__pyx_ptype_6_pyrpd_PyRData = 0;
-static PyTypeObject *__pyx_ptype_6_pyrpd_PyRProcess = 0;
+/* Module declarations from 'pyrpd._pyrpd' */
+static PyTypeObject *__pyx_ptype_5pyrpd_6_pyrpd_PyRData = 0;
+static PyTypeObject *__pyx_ptype_5pyrpd_6_pyrpd_PyRProcess = 0;
 static std::string __pyx_convert_string_from_py_std__in_string(PyObject *); /*proto*/
 static std::set<std::string>  __pyx_convert_set_from_py_std_3a__3a_string(PyObject *); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyObject_string_to_py_std__in_string(std::string const &); /*proto*/
@@ -1355,11 +1367,11 @@ static CYTHON_INLINE PyObject *__pyx_convert_PyUnicode_string_to_py_std__in_stri
 static CYTHON_INLINE PyObject *__pyx_convert_PyStr_string_to_py_std__in_string(std::string const &); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyBytes_string_to_py_std__in_string(std::string const &); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyByteArray_string_to_py_std__in_string(std::string const &); /*proto*/
-#define __Pyx_MODULE_NAME "_pyrpd"
-extern int __pyx_module_is_main__pyrpd;
-int __pyx_module_is_main__pyrpd = 0;
+#define __Pyx_MODULE_NAME "pyrpd._pyrpd"
+extern int __pyx_module_is_main_pyrpd___pyrpd;
+int __pyx_module_is_main_pyrpd___pyrpd = 0;
 
-/* Implementation of '_pyrpd' */
+/* Implementation of 'pyrpd._pyrpd' */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_RuntimeError;
 static const char __pyx_k_hid[] = "hid";
@@ -1370,7 +1382,6 @@ static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_param[] = "param";
-static const char __pyx_k_pyrpd[] = "_pyrpd";
 static const char __pyx_k_length[] = "length";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_PyRData[] = "PyRData";
@@ -1385,13 +1396,15 @@ static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_PyRProcess[] = "PyRProcess";
 static const char __pyx_k_new_wechat[] = "new_wechat";
 static const char __pyx_k_new_wxwork[] = "new_wxwork";
+static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_handle_list[] = "handle_list";
 static const char __pyx_k_module_name[] = "module_name";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_kill_handles[] = "kill_handles";
+static const char __pyx_k_pyrpd__pyrpd[] = "pyrpd._pyrpd";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
-static const char __pyx_k_src__pyrpd_pyx[] = "src\\_pyrpd.pyx";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_source__pyrpd_pyx[] = "source\\_pyrpd.pyx";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_create_remote_process_falied[] = "create remote process falied.";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
@@ -1419,38 +1432,41 @@ static PyObject *__pyx_n_s_new_wxwork;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_param;
 static PyObject *__pyx_n_s_pid;
-static PyObject *__pyx_n_s_pyrpd;
+static PyObject *__pyx_n_s_pyrpd__pyrpd;
+static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_size;
-static PyObject *__pyx_kp_s_src__pyrpd_pyx;
+static PyObject *__pyx_kp_s_source__pyrpd_pyx;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pid, PyObject *__pyx_v_handle_list); /* proto */
-static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self, unsigned int __pyx_v_hid, unsigned char *__pyx_v_data, unsigned int __pyx_v_size); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self); /* proto */
-static void __pyx_pf_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_pid); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dll_name, PyObject *__pyx_v_func_name); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllpath); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllname); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name, PyObject *__pyx_v_func_name, PyObject *__pyx_v_param); /* proto */
-static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_data); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_address, int __pyx_v_length); /* proto */
-static void __pyx_pf_6_pyrpd_10PyRProcess_16__dealloc__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_6_pyrpd_PyRData(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_6_pyrpd_PyRProcess(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pid, PyObject *__pyx_v_handle_list); /* proto */
+static int __pyx_pf_5pyrpd_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self, unsigned int __pyx_v_hid, unsigned char *__pyx_v_data, unsigned int __pyx_v_size); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_2id(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self); /* proto */
+static void __pyx_pf_5pyrpd_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_pid); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_2reopen(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10last_error___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_4GetProcAddress(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dll_name, PyObject *__pyx_v_func_name); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_6GetModuleHandle(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_8load(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllpath); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10unload(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllname); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_12call(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name, PyObject *__pyx_v_func_name, PyObject *__pyx_v_param); /* proto */
+static struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_14write(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_data); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_16read(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_address, int __pyx_v_length); /* proto */
+static void __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_18__dealloc__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_5pyrpd_6_pyrpd_PyRData(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_5pyrpd_6_pyrpd_PyRProcess(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
@@ -1462,7 +1478,7 @@ static PyObject *__pyx_codeobj__7;
 static PyObject *__pyx_codeobj__9;
 /* Late includes */
 
-/* "_pyrpd.pyx":19
+/* "source/_pyrpd.pyx":19
  *     PyObject* PyBytes_FromStringAndSize(const char* u, Py_ssize_t size)
  * 
  * def new_wechat() -> int:             # <<<<<<<<<<<<<<
@@ -1471,21 +1487,21 @@ static PyObject *__pyx_codeobj__9;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_1new_wechat(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6_pyrpd_new_wechat[] = "\n    Start a new WeChat process, return the process ID.\n    ";
-static PyMethodDef __pyx_mdef_6_pyrpd_1new_wechat = {"new_wechat", (PyCFunction)__pyx_pw_6_pyrpd_1new_wechat, METH_NOARGS, __pyx_doc_6_pyrpd_new_wechat};
-static PyObject *__pyx_pw_6_pyrpd_1new_wechat(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_1new_wechat(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_new_wechat[] = "\n    Start a new WeChat process, return the process ID.\n    ";
+static PyMethodDef __pyx_mdef_5pyrpd_6_pyrpd_1new_wechat = {"new_wechat", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_1new_wechat, METH_NOARGS, __pyx_doc_5pyrpd_6_pyrpd_new_wechat};
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_1new_wechat(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("new_wechat (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_new_wechat(__pyx_self);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_new_wechat(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1494,7 +1510,7 @@ static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self)
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("new_wechat", 0);
 
-  /* "_pyrpd.pyx":23
+  /* "source/_pyrpd.pyx":23
  *     Start a new WeChat process, return the process ID.
  *     """
  *     return core_def.new_wechat()             # <<<<<<<<<<<<<<
@@ -1508,7 +1524,7 @@ static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self)
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":19
+  /* "source/_pyrpd.pyx":19
  *     PyObject* PyBytes_FromStringAndSize(const char* u, Py_ssize_t size)
  * 
  * def new_wechat() -> int:             # <<<<<<<<<<<<<<
@@ -1519,7 +1535,7 @@ static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self)
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.new_wechat", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.new_wechat", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1527,7 +1543,7 @@ static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self)
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":25
+/* "source/_pyrpd.pyx":25
  *     return core_def.new_wechat()
  * 
  * def new_wxwork() -> int:             # <<<<<<<<<<<<<<
@@ -1536,21 +1552,21 @@ static PyObject *__pyx_pf_6_pyrpd_new_wechat(CYTHON_UNUSED PyObject *__pyx_self)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_3new_wxwork(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6_pyrpd_2new_wxwork[] = "\n    Start a new WxWork process, return the process ID.\n    ";
-static PyMethodDef __pyx_mdef_6_pyrpd_3new_wxwork = {"new_wxwork", (PyCFunction)__pyx_pw_6_pyrpd_3new_wxwork, METH_NOARGS, __pyx_doc_6_pyrpd_2new_wxwork};
-static PyObject *__pyx_pw_6_pyrpd_3new_wxwork(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_3new_wxwork(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_2new_wxwork[] = "\n    Start a new WxWork process, return the process ID.\n    ";
+static PyMethodDef __pyx_mdef_5pyrpd_6_pyrpd_3new_wxwork = {"new_wxwork", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_3new_wxwork, METH_NOARGS, __pyx_doc_5pyrpd_6_pyrpd_2new_wxwork};
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_3new_wxwork(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("new_wxwork (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_2new_wxwork(__pyx_self);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_2new_wxwork(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1559,7 +1575,7 @@ static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("new_wxwork", 0);
 
-  /* "_pyrpd.pyx":29
+  /* "source/_pyrpd.pyx":29
  *     Start a new WxWork process, return the process ID.
  *     """
  *     return core_def.new_wxwork()             # <<<<<<<<<<<<<<
@@ -1573,7 +1589,7 @@ static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":25
+  /* "source/_pyrpd.pyx":25
  *     return core_def.new_wechat()
  * 
  * def new_wxwork() -> int:             # <<<<<<<<<<<<<<
@@ -1584,7 +1600,7 @@ static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.new_wxwork", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.new_wxwork", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1592,7 +1608,7 @@ static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":31
+/* "source/_pyrpd.pyx":31
  *     return core_def.new_wxwork()
  * 
  * def kill_handles(pid:int,handle_list:set) -> bool:             # <<<<<<<<<<<<<<
@@ -1601,10 +1617,10 @@ static PyObject *__pyx_pf_6_pyrpd_2new_wxwork(CYTHON_UNUSED PyObject *__pyx_self
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6_pyrpd_4kill_handles[] = "\n    Close the handle according to the handle name\n    Parameters\n    ----------\n    pid: int\n        process ID.\n    handle_list: set<str>\n        handle names\n\n    Returns\n    -------\n    True for success and False for falied.\n    ";
-static PyMethodDef __pyx_mdef_6_pyrpd_5kill_handles = {"kill_handles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6_pyrpd_5kill_handles, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6_pyrpd_4kill_handles};
-static PyObject *__pyx_pw_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_4kill_handles[] = "\n    Close the handle according to the handle name\n    Parameters\n    ----------\n    pid: int\n        process ID.\n    handle_list: set<str>\n        handle names\n\n    Returns\n    -------\n    True for success and False for falied.\n    ";
+static PyMethodDef __pyx_mdef_5pyrpd_6_pyrpd_5kill_handles = {"kill_handles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pyrpd_6_pyrpd_5kill_handles, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5pyrpd_6_pyrpd_4kill_handles};
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_pid = 0;
   PyObject *__pyx_v_handle_list = 0;
   int __pyx_lineno = 0;
@@ -1655,12 +1671,12 @@ static PyObject *__pyx_pw_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("kill_handles", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 31, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.kill_handles", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.kill_handles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_handle_list), (&PySet_Type), 1, "handle_list", 1))) __PYX_ERR(1, 31, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_4kill_handles(__pyx_self, __pyx_v_pid, __pyx_v_handle_list);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_4kill_handles(__pyx_self, __pyx_v_pid, __pyx_v_handle_list);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1671,7 +1687,7 @@ static PyObject *__pyx_pw_6_pyrpd_5kill_handles(PyObject *__pyx_self, PyObject *
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pid, PyObject *__pyx_v_handle_list) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pid, PyObject *__pyx_v_handle_list) {
   PyObject *__pyx_v_handles = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -1683,7 +1699,7 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("kill_handles", 0);
 
-  /* "_pyrpd.pyx":45
+  /* "source/_pyrpd.pyx":45
  *     True for success and False for falied.
  *     """
  *     cdef set handles = set(handle_list)             # <<<<<<<<<<<<<<
@@ -1695,7 +1711,7 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_handles = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "_pyrpd.pyx":46
+  /* "source/_pyrpd.pyx":46
  *     """
  *     cdef set handles = set(handle_list)
  *     return core_def.kill_handles(pid,handles)             # <<<<<<<<<<<<<<
@@ -1711,7 +1727,7 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":31
+  /* "source/_pyrpd.pyx":31
  *     return core_def.new_wxwork()
  * 
  * def kill_handles(pid:int,handle_list:set) -> bool:             # <<<<<<<<<<<<<<
@@ -1722,7 +1738,7 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.kill_handles", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.kill_handles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_handles);
@@ -1731,7 +1747,7 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":50
+/* "source/_pyrpd.pyx":50
  * cdef class PyRData:
  *     cdef RData* _rdata
  *     def __cinit__(self,unsigned int hid,unsigned char* data,unsigned int size):             # <<<<<<<<<<<<<<
@@ -1740,8 +1756,8 @@ static PyObject *__pyx_pf_6_pyrpd_4kill_handles(CYTHON_UNUSED PyObject *__pyx_se
  */
 
 /* Python wrapper */
-static int __pyx_pw_6_pyrpd_7PyRData_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_6_pyrpd_7PyRData_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_5pyrpd_6_pyrpd_7PyRData_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_5pyrpd_6_pyrpd_7PyRData_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   unsigned int __pyx_v_hid;
   unsigned char *__pyx_v_data;
   unsigned int __pyx_v_size;
@@ -1803,18 +1819,18 @@ static int __pyx_pw_6_pyrpd_7PyRData_1__cinit__(PyObject *__pyx_v_self, PyObject
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRData.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRData.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6_pyrpd_7PyRData___cinit__(((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_v_self), __pyx_v_hid, __pyx_v_data, __pyx_v_size);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_7PyRData___cinit__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_v_self), __pyx_v_hid, __pyx_v_data, __pyx_v_size);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self, unsigned int __pyx_v_hid, unsigned char *__pyx_v_data, unsigned int __pyx_v_size) {
+static int __pyx_pf_5pyrpd_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self, unsigned int __pyx_v_hid, unsigned char *__pyx_v_data, unsigned int __pyx_v_size) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   RData *__pyx_t_1;
@@ -1823,7 +1839,7 @@ static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "_pyrpd.pyx":51
+  /* "source/_pyrpd.pyx":51
  *     cdef RData* _rdata
  *     def __cinit__(self,unsigned int hid,unsigned char* data,unsigned int size):
  *         self._rdata = new RData(hid,data,size)             # <<<<<<<<<<<<<<
@@ -1838,7 +1854,7 @@ static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData 
   }
   __pyx_v_self->_rdata = __pyx_t_1;
 
-  /* "_pyrpd.pyx":50
+  /* "source/_pyrpd.pyx":50
  * cdef class PyRData:
  *     cdef RData* _rdata
  *     def __cinit__(self,unsigned int hid,unsigned char* data,unsigned int size):             # <<<<<<<<<<<<<<
@@ -1850,14 +1866,14 @@ static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData 
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRData.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRData.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":53
+/* "source/_pyrpd.pyx":53
  *         self._rdata = new RData(hid,data,size)
  * 
  *     def id(self):             # <<<<<<<<<<<<<<
@@ -1866,20 +1882,20 @@ static int __pyx_pf_6_pyrpd_7PyRData___cinit__(struct __pyx_obj_6_pyrpd_PyRData 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_3id(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6_pyrpd_7PyRData_2id[] = "\n        return remote data begin address\n        ";
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_3id(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_3id(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_7PyRData_2id[] = "\n        return remote data begin address\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_3id(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("id (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_7PyRData_2id(((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_7PyRData_2id(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_2id(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1888,7 +1904,7 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("id", 0);
 
-  /* "_pyrpd.pyx":57
+  /* "source/_pyrpd.pyx":57
  *         return remote data begin address
  *         """
  *         return self._rdata.id()             # <<<<<<<<<<<<<<
@@ -1902,7 +1918,7 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":53
+  /* "source/_pyrpd.pyx":53
  *         self._rdata = new RData(hid,data,size)
  * 
  *     def id(self):             # <<<<<<<<<<<<<<
@@ -1913,7 +1929,7 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRData.id", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRData.id", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1921,7 +1937,7 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData 
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":59
+/* "source/_pyrpd.pyx":59
  *         return self._rdata.id()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1930,21 +1946,21 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_2id(struct __pyx_obj_6_pyrpd_PyRData 
  */
 
 /* Python wrapper */
-static void __pyx_pw_6_pyrpd_7PyRData_5__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_6_pyrpd_7PyRData_5__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_5pyrpd_6_pyrpd_7PyRData_5__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_5pyrpd_6_pyrpd_7PyRData_5__dealloc__(PyObject *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
-  __pyx_pf_6_pyrpd_7PyRData_4__dealloc__(((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_v_self));
+  __pyx_pf_5pyrpd_6_pyrpd_7PyRData_4__dealloc__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self) {
+static void __pyx_pf_5pyrpd_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "_pyrpd.pyx":60
+  /* "source/_pyrpd.pyx":60
  * 
  *     def __dealloc__(self):
  *         del self._rdata             # <<<<<<<<<<<<<<
@@ -1953,7 +1969,7 @@ static void __pyx_pf_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_6_pyrpd_PyRD
  */
   delete __pyx_v_self->_rdata;
 
-  /* "_pyrpd.pyx":59
+  /* "source/_pyrpd.pyx":59
  *         return self._rdata.id()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1972,19 +1988,19 @@ static void __pyx_pf_6_pyrpd_7PyRData_4__dealloc__(struct __pyx_obj_6_pyrpd_PyRD
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_7PyRData_6__reduce_cython__(((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_7PyRData_6__reduce_cython__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2014,7 +2030,7 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRData.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRData.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -2029,19 +2045,19 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_6__reduce_cython__(CYTHON_UNUSED stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_7PyRData_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_7PyRData_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_7PyRData_8__setstate_cython__(((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_7PyRData_8__setstate_cython__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_7PyRData_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRData *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_7PyRData_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2071,24 +2087,24 @@ static PyObject *__pyx_pf_6_pyrpd_7PyRData_8__setstate_cython__(CYTHON_UNUSED st
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRData.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRData.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":65
- *     cdef RProcess* _rp
+/* "source/_pyrpd.pyx":66
  *     cdef int _pid
+ *     cdef unsigned int _err_code
  *     def __cinit__(self,unsigned int pid):             # <<<<<<<<<<<<<<
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:
  */
 
 /* Python wrapper */
-static int __pyx_pw_6_pyrpd_10PyRProcess_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_6_pyrpd_10PyRProcess_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   unsigned int __pyx_v_pid;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -2115,31 +2131,31 @@ static int __pyx_pw_6_pyrpd_10PyRProcess_1__cinit__(PyObject *__pyx_v_self, PyOb
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 65, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 66, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
     }
-    __pyx_v_pid = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_pid == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 65, __pyx_L3_error)
+    __pyx_v_pid = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_pid == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 66, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 65, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 66, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess___cinit__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_pid);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess___cinit__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_pid);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_pid) {
+static int __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_pid) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   RProcess *__pyx_t_1;
@@ -2150,8 +2166,8 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "_pyrpd.pyx":66
- *     cdef int _pid
+  /* "source/_pyrpd.pyx":67
+ *     cdef unsigned int _err_code
  *     def __cinit__(self,unsigned int pid):
  *         self._rp = new RProcess(pid)             # <<<<<<<<<<<<<<
  *         if self._rp.m_init == False:
@@ -2161,11 +2177,11 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
     __pyx_t_1 = new RProcess(__pyx_v_pid);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 66, __pyx_L1_error)
+    __PYX_ERR(1, 67, __pyx_L1_error)
   }
   __pyx_v_self->_rp = __pyx_t_1;
 
-  /* "_pyrpd.pyx":67
+  /* "source/_pyrpd.pyx":68
  *     def __cinit__(self,unsigned int pid):
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:             # <<<<<<<<<<<<<<
@@ -2175,20 +2191,20 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
   __pyx_t_2 = ((__pyx_v_self->_rp->m_init == 0) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "_pyrpd.pyx":68
+    /* "source/_pyrpd.pyx":69
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:
  *             raise RuntimeError("create remote process falied.")             # <<<<<<<<<<<<<<
  *         self._pid = pid
- * 
+ *         self._err_code = 0
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 68, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(1, 68, __pyx_L1_error)
+    __PYX_ERR(1, 69, __pyx_L1_error)
 
-    /* "_pyrpd.pyx":67
+    /* "source/_pyrpd.pyx":68
  *     def __cinit__(self,unsigned int pid):
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:             # <<<<<<<<<<<<<<
@@ -2197,18 +2213,27 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
  */
   }
 
-  /* "_pyrpd.pyx":69
+  /* "source/_pyrpd.pyx":70
  *         if self._rp.m_init == False:
  *             raise RuntimeError("create remote process falied.")
  *         self._pid = pid             # <<<<<<<<<<<<<<
+ *         self._err_code = 0
  * 
- *     @property
  */
   __pyx_v_self->_pid = __pyx_v_pid;
 
-  /* "_pyrpd.pyx":65
- *     cdef RProcess* _rp
+  /* "source/_pyrpd.pyx":71
+ *             raise RuntimeError("create remote process falied.")
+ *         self._pid = pid
+ *         self._err_code = 0             # <<<<<<<<<<<<<<
+ * 
+ *     def reopen(self):
+ */
+  __pyx_v_self->_err_code = 0;
+
+  /* "source/_pyrpd.pyx":66
  *     cdef int _pid
+ *     cdef unsigned int _err_code
  *     def __cinit__(self,unsigned int pid):             # <<<<<<<<<<<<<<
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:
@@ -2219,14 +2244,138 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":72
+/* "source/_pyrpd.pyx":73
+ *         self._err_code = 0
+ * 
+ *     def reopen(self):             # <<<<<<<<<<<<<<
+ *         del self._rp
+ *         self._rp = new RProcess(self.pid)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3reopen(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3reopen(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("reopen (wrapper)", 0);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_2reopen(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_2reopen(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __pyx_t_10_pyrpd_def_DWORD __pyx_t_2;
+  RProcess *__pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("reopen", 0);
+
+  /* "source/_pyrpd.pyx":74
+ * 
+ *     def reopen(self):
+ *         del self._rp             # <<<<<<<<<<<<<<
+ *         self._rp = new RProcess(self.pid)
+ *         if self._rp.m_init == False:
+ */
+  delete __pyx_v_self->_rp;
+
+  /* "source/_pyrpd.pyx":75
+ *     def reopen(self):
+ *         del self._rp
+ *         self._rp = new RProcess(self.pid)             # <<<<<<<<<<<<<<
+ *         if self._rp.m_init == False:
+ *             raise RuntimeError("create remote process falied.")
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_pid); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 75, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 75, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  try {
+    __pyx_t_3 = new RProcess(__pyx_t_2);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(1, 75, __pyx_L1_error)
+  }
+  __pyx_v_self->_rp = __pyx_t_3;
+
+  /* "source/_pyrpd.pyx":76
+ *         del self._rp
+ *         self._rp = new RProcess(self.pid)
+ *         if self._rp.m_init == False:             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("create remote process falied.")
+ *         return True
+ */
+  __pyx_t_4 = ((__pyx_v_self->_rp->m_init == 0) != 0);
+  if (unlikely(__pyx_t_4)) {
+
+    /* "source/_pyrpd.pyx":77
+ *         self._rp = new RProcess(self.pid)
+ *         if self._rp.m_init == False:
+ *             raise RuntimeError("create remote process falied.")             # <<<<<<<<<<<<<<
+ *         return True
+ * 
+ */
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(1, 77, __pyx_L1_error)
+
+    /* "source/_pyrpd.pyx":76
+ *         del self._rp
+ *         self._rp = new RProcess(self.pid)
+ *         if self._rp.m_init == False:             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("create remote process falied.")
+ *         return True
+ */
+  }
+
+  /* "source/_pyrpd.pyx":78
+ *         if self._rp.m_init == False:
+ *             raise RuntimeError("create remote process falied.")
+ *         return True             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(Py_True);
+  __pyx_r = Py_True;
+  goto __pyx_L0;
+
+  /* "source/_pyrpd.pyx":73
+ *         self._err_code = 0
+ * 
+ *     def reopen(self):             # <<<<<<<<<<<<<<
+ *         del self._rp
+ *         self._rp = new RProcess(self.pid)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.reopen", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "source/_pyrpd.pyx":81
  * 
  *     @property
  *     def pid(self) -> int:             # <<<<<<<<<<<<<<
@@ -2235,19 +2384,19 @@ static int __pyx_pf_6_pyrpd_10PyRProcess___cinit__(struct __pyx_obj_6_pyrpd_PyRP
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3pid_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3pid_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3pid_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3pid_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3pid___get__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2256,7 +2405,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "_pyrpd.pyx":76
+  /* "source/_pyrpd.pyx":85
  *         return process ID managed by this object
  *         """
  *         return self._pid             # <<<<<<<<<<<<<<
@@ -2264,13 +2413,13 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_p
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_pid); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 76, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_pid); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":72
+  /* "source/_pyrpd.pyx":81
  * 
  *     @property
  *     def pid(self) -> int:             # <<<<<<<<<<<<<<
@@ -2281,7 +2430,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.pid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.pid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2289,28 +2438,28 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3pid___get__(struct __pyx_obj_6_p
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":79
+/* "source/_pyrpd.pyx":88
  * 
  *     @property
- *     def hid(self) -> int:             # <<<<<<<<<<<<<<
- *         """
- *         return the handle opened in the remote process
+ *     def last_error(self) -> int:             # <<<<<<<<<<<<<<
+ *         return self._err_code
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3hid_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3hid_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_10last_error_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_10last_error_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10last_error___get__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10last_error___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2319,7 +2468,70 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "_pyrpd.pyx":83
+  /* "source/_pyrpd.pyx":89
+ *     @property
+ *     def last_error(self) -> int:
+ *         return self._err_code             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_err_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "source/_pyrpd.pyx":88
+ * 
+ *     @property
+ *     def last_error(self) -> int:             # <<<<<<<<<<<<<<
+ *         return self._err_code
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.last_error.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "source/_pyrpd.pyx":92
+ * 
+ *     @property
+ *     def hid(self) -> int:             # <<<<<<<<<<<<<<
+ *         """
+ *         return the handle opened in the remote process
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3hid_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3hid_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3hid___get__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "source/_pyrpd.pyx":96
  *         return the handle opened in the remote process
  *         """
  *         return <unsigned int>self._rp.GetHandle()             # <<<<<<<<<<<<<<
@@ -2327,13 +2539,13 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_p
  *     def GetProcAddress(self,dll_name:str,func_name:str) -> int:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(((unsigned int)__pyx_v_self->_rp->GetHandle())); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 83, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(((unsigned int)__pyx_v_self->_rp->GetHandle())); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":79
+  /* "source/_pyrpd.pyx":92
  * 
  *     @property
  *     def hid(self) -> int:             # <<<<<<<<<<<<<<
@@ -2344,7 +2556,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.hid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.hid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2352,7 +2564,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_p
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":85
+/* "source/_pyrpd.pyx":98
  *         return <unsigned int>self._rp.GetHandle()
  * 
  *     def GetProcAddress(self,dll_name:str,func_name:str) -> int:             # <<<<<<<<<<<<<<
@@ -2361,9 +2573,9 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_3hid___get__(struct __pyx_obj_6_p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_2GetProcAddress[] = "\n        Get function address by module name and function name\n        Parameters\n        ----------\n        dll_name : str\n            module name.\n        func_name:\n            function name located in the module\n\n        Returns\n        -------\n        address for success and 0 for falied.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_5GetProcAddress(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_4GetProcAddress[] = "\n        Get function address by module name and function name\n        Parameters\n        ----------\n        dll_name : str\n            module name.\n        func_name:\n            function name located in the module\n\n        Returns\n        -------\n        address for success and 0 for falied.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_5GetProcAddress(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_dll_name = 0;
   PyObject *__pyx_v_func_name = 0;
   int __pyx_lineno = 0;
@@ -2395,11 +2607,11 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress(PyObject *__pyx_v
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_func_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("GetProcAddress", 1, 2, 2, 1); __PYX_ERR(1, 85, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GetProcAddress", 1, 2, 2, 1); __PYX_ERR(1, 98, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "GetProcAddress") < 0)) __PYX_ERR(1, 85, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "GetProcAddress") < 0)) __PYX_ERR(1, 98, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2412,15 +2624,15 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress(PyObject *__pyx_v
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GetProcAddress", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 85, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GetProcAddress", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 98, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.GetProcAddress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.GetProcAddress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dll_name), (&PyUnicode_Type), 1, "dll_name", 1))) __PYX_ERR(1, 85, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_func_name), (&PyUnicode_Type), 1, "func_name", 1))) __PYX_ERR(1, 85, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_dll_name, __pyx_v_func_name);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dll_name), (&PyUnicode_Type), 1, "dll_name", 1))) __PYX_ERR(1, 98, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_func_name), (&PyUnicode_Type), 1, "func_name", 1))) __PYX_ERR(1, 98, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_4GetProcAddress(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_dll_name, __pyx_v_func_name);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2431,50 +2643,70 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress(PyObject *__pyx_v
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dll_name, PyObject *__pyx_v_func_name) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_4GetProcAddress(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dll_name, PyObject *__pyx_v_func_name) {
+  __pyx_t_10_pyrpd_def_DWORD __pyx_v_result;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   char const *__pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
   char const *__pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("GetProcAddress", 0);
 
-  /* "_pyrpd.pyx":99
+  /* "source/_pyrpd.pyx":112
  *         address for success and 0 for falied.
  *         """
- *         return self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())             # <<<<<<<<<<<<<<
+ *         result = self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return result
+ */
+  if (unlikely(__pyx_v_dll_name == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
+    __PYX_ERR(1, 112, __pyx_L1_error)
+  }
+  __pyx_t_1 = PyUnicode_AsEncodedString(__pyx_v_dll_name, NULL, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(1, 112, __pyx_L1_error)
+  if (unlikely(__pyx_v_func_name == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
+    __PYX_ERR(1, 112, __pyx_L1_error)
+  }
+  __pyx_t_3 = PyUnicode_AsEncodedString(__pyx_v_func_name, NULL, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_t_3); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(1, 112, __pyx_L1_error)
+  __pyx_v_result = __pyx_v_self->_rp->GetRemoteProcAddress(__pyx_t_2, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "source/_pyrpd.pyx":113
+ *         """
+ *         result = self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+  __pyx_t_3 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 113, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "source/_pyrpd.pyx":114
+ *         result = self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+ *         self.set_err_code()
+ *         return result             # <<<<<<<<<<<<<<
  * 
  *     def GetModuleHandle(self,module_name:str) -> int:
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(__pyx_v_dll_name == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(1, 99, __pyx_L1_error)
-  }
-  __pyx_t_1 = PyUnicode_AsEncodedString(__pyx_v_dll_name, NULL, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
-  if (unlikely(__pyx_v_func_name == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(1, 99, __pyx_L1_error)
-  }
-  __pyx_t_3 = PyUnicode_AsEncodedString(__pyx_v_func_name, NULL, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 99, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_unsigned_int(__pyx_v_result); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_t_3); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_rp->GetRemoteProcAddress(__pyx_t_2, __pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_r = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":85
+  /* "source/_pyrpd.pyx":98
  *         return <unsigned int>self._rp.GetHandle()
  * 
  *     def GetProcAddress(self,dll_name:str,func_name:str) -> int:             # <<<<<<<<<<<<<<
@@ -2486,8 +2718,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(struct __pyx_obj_
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.GetProcAddress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.GetProcAddress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2495,8 +2726,8 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":101
- *         return self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+/* "source/_pyrpd.pyx":116
+ *         return result
  * 
  *     def GetModuleHandle(self,module_name:str) -> int:             # <<<<<<<<<<<<<<
  *         """
@@ -2504,17 +2735,17 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_2GetProcAddress(struct __pyx_obj_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_5GetModuleHandle(PyObject *__pyx_v_self, PyObject *__pyx_v_module_name); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_4GetModuleHandle[] = "\n        Get module base address by module name\n        Parameters\n        ----------\n        module_name : str\n            module name.\n\n        Returns\n        -------\n        address for success and 0 for falied.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_5GetModuleHandle(PyObject *__pyx_v_self, PyObject *__pyx_v_module_name) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_7GetModuleHandle(PyObject *__pyx_v_self, PyObject *__pyx_v_module_name); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_6GetModuleHandle[] = "\n        Get module base address by module name\n        Parameters\n        ----------\n        module_name : str\n            module name.\n\n        Returns\n        -------\n        address for success and 0 for falied.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_7GetModuleHandle(PyObject *__pyx_v_self, PyObject *__pyx_v_module_name) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("GetModuleHandle (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_module_name), (&PyUnicode_Type), 1, "module_name", 1))) __PYX_ERR(1, 101, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_module_name));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_module_name), (&PyUnicode_Type), 1, "module_name", 1))) __PYX_ERR(1, 116, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_6GetModuleHandle(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_module_name));
 
   /* function exit code */
   goto __pyx_L0;
@@ -2525,8 +2756,9 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_5GetModuleHandle(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_6GetModuleHandle(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name) {
   wchar_t *__pyx_v_c_module_name;
+  __pyx_t_10_pyrpd_def_DWORD __pyx_v_result;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2535,31 +2767,51 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("GetModuleHandle", 0);
 
-  /* "_pyrpd.pyx":113
+  /* "source/_pyrpd.pyx":128
  *         address for success and 0 for falied.
  *         """
  *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)             # <<<<<<<<<<<<<<
- *         return self._rp.GetRemoteModuleHandle(c_module_name)
- * 
+ *         result = self._rp.GetRemoteModuleHandle(c_module_name)
+ *         self.set_err_code()
  */
   __pyx_v_c_module_name = PyUnicode_AsWideCharString(((PyObject *)__pyx_v_module_name), ((Py_ssize_t *)0));
 
-  /* "_pyrpd.pyx":114
+  /* "source/_pyrpd.pyx":129
  *         """
  *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
- *         return self._rp.GetRemoteModuleHandle(c_module_name)             # <<<<<<<<<<<<<<
+ *         result = self._rp.GetRemoteModuleHandle(c_module_name)             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return result
+ */
+  __pyx_v_result = __pyx_v_self->_rp->GetRemoteModuleHandle(__pyx_v_c_module_name);
+
+  /* "source/_pyrpd.pyx":130
+ *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
+ *         result = self._rp.GetRemoteModuleHandle(c_module_name)
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "source/_pyrpd.pyx":131
+ *         result = self._rp.GetRemoteModuleHandle(c_module_name)
+ *         self.set_err_code()
+ *         return result             # <<<<<<<<<<<<<<
  * 
  *     def load(self,dllpath:str) -> bool:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_rp->GetRemoteModuleHandle(__pyx_v_c_module_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 114, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(__pyx_v_result); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":101
- *         return self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+  /* "source/_pyrpd.pyx":116
+ *         return result
  * 
  *     def GetModuleHandle(self,module_name:str) -> int:             # <<<<<<<<<<<<<<
  *         """
@@ -2569,7 +2821,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.GetModuleHandle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.GetModuleHandle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2577,8 +2829,8 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":116
- *         return self._rp.GetRemoteModuleHandle(c_module_name)
+/* "source/_pyrpd.pyx":133
+ *         return result
  * 
  *     def load(self,dllpath:str) -> bool:             # <<<<<<<<<<<<<<
  *         """
@@ -2586,17 +2838,17 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_4GetModuleHandle(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_7load(PyObject *__pyx_v_self, PyObject *__pyx_v_dllpath); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_6load[] = "\n        inject a dll to remote process.\n        Parameters\n        ----------\n        dllpath : str\n            the absolute path for dll file.\n\n        Returns\n        -------\n        True for success and False for falied.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_7load(PyObject *__pyx_v_self, PyObject *__pyx_v_dllpath) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_9load(PyObject *__pyx_v_self, PyObject *__pyx_v_dllpath); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_8load[] = "\n        inject a dll to remote process.\n        Parameters\n        ----------\n        dllpath : str\n            the absolute path for dll file.\n\n        Returns\n        -------\n        True for success and False for falied.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_9load(PyObject *__pyx_v_self, PyObject *__pyx_v_dllpath) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("load (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dllpath), (&PyUnicode_Type), 1, "dllpath", 1))) __PYX_ERR(1, 116, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_6load(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_dllpath));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dllpath), (&PyUnicode_Type), 1, "dllpath", 1))) __PYX_ERR(1, 133, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_8load(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_dllpath));
 
   /* function exit code */
   goto __pyx_L0;
@@ -2607,8 +2859,9 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_7load(PyObject *__pyx_v_self, PyO
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllpath) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_8load(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllpath) {
   wchar_t *__pyx_v_c_dllpath;
+  bool __pyx_v_result;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2617,31 +2870,51 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load", 0);
 
-  /* "_pyrpd.pyx":128
+  /* "source/_pyrpd.pyx":145
  *         True for success and False for falied.
  *         """
  *         cdef wchar_t* c_dllpath = PyUnicode_AsWideCharString(<PyObject*>dllpath,<Py_ssize_t*>0)             # <<<<<<<<<<<<<<
- *         return self._rp.load(c_dllpath)
- * 
+ *         result = self._rp.load(c_dllpath)
+ *         self.set_err_code()
  */
   __pyx_v_c_dllpath = PyUnicode_AsWideCharString(((PyObject *)__pyx_v_dllpath), ((Py_ssize_t *)0));
 
-  /* "_pyrpd.pyx":129
+  /* "source/_pyrpd.pyx":146
  *         """
  *         cdef wchar_t* c_dllpath = PyUnicode_AsWideCharString(<PyObject*>dllpath,<Py_ssize_t*>0)
- *         return self._rp.load(c_dllpath)             # <<<<<<<<<<<<<<
+ *         result = self._rp.load(c_dllpath)             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return result
+ */
+  __pyx_v_result = __pyx_v_self->_rp->load(__pyx_v_c_dllpath);
+
+  /* "source/_pyrpd.pyx":147
+ *         cdef wchar_t* c_dllpath = PyUnicode_AsWideCharString(<PyObject*>dllpath,<Py_ssize_t*>0)
+ *         result = self._rp.load(c_dllpath)
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 147, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "source/_pyrpd.pyx":148
+ *         result = self._rp.load(c_dllpath)
+ *         self.set_err_code()
+ *         return result             # <<<<<<<<<<<<<<
  * 
  *     def unload(self,dllname:str) -> bool:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_rp->load(__pyx_v_c_dllpath)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_result); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":116
- *         return self._rp.GetRemoteModuleHandle(c_module_name)
+  /* "source/_pyrpd.pyx":133
+ *         return result
  * 
  *     def load(self,dllpath:str) -> bool:             # <<<<<<<<<<<<<<
  *         """
@@ -2651,7 +2924,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_Py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.load", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.load", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2659,8 +2932,8 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_Py
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":131
- *         return self._rp.load(c_dllpath)
+/* "source/_pyrpd.pyx":150
+ *         return result
  * 
  *     def unload(self,dllname:str) -> bool:             # <<<<<<<<<<<<<<
  *         """
@@ -2668,17 +2941,17 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_6load(struct __pyx_obj_6_pyrpd_Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_9unload(PyObject *__pyx_v_self, PyObject *__pyx_v_dllname); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_8unload[] = "\n        release a dll from remote process.\n        Parameters\n        ----------\n        dllname : str\n            the dll file name.\n\n        Returns\n        -------\n        True for success and False for falied.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_9unload(PyObject *__pyx_v_self, PyObject *__pyx_v_dllname) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_11unload(PyObject *__pyx_v_self, PyObject *__pyx_v_dllname); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_10unload[] = "\n        release a dll from remote process.\n        Parameters\n        ----------\n        dllname : str\n            the dll file name.\n\n        Returns\n        -------\n        True for success and False for falied.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_11unload(PyObject *__pyx_v_self, PyObject *__pyx_v_dllname) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("unload (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dllname), (&PyUnicode_Type), 1, "dllname", 1))) __PYX_ERR(1, 131, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_8unload(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_dllname));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dllname), (&PyUnicode_Type), 1, "dllname", 1))) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10unload(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_dllname));
 
   /* function exit code */
   goto __pyx_L0;
@@ -2689,8 +2962,9 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_9unload(PyObject *__pyx_v_self, P
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllname) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_10unload(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_dllname) {
   wchar_t *__pyx_v_c_dllname;
+  bool __pyx_v_result;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2699,31 +2973,51 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("unload", 0);
 
-  /* "_pyrpd.pyx":143
+  /* "source/_pyrpd.pyx":162
  *         True for success and False for falied.
  *         """
  *         cdef wchar_t* c_dllname = PyUnicode_AsWideCharString(<PyObject*>dllname,<Py_ssize_t*>0)             # <<<<<<<<<<<<<<
- *         return self._rp.unload(c_dllname)
- * 
+ *         result = self._rp.unload(c_dllname)
+ *         self.set_err_code()
  */
   __pyx_v_c_dllname = PyUnicode_AsWideCharString(((PyObject *)__pyx_v_dllname), ((Py_ssize_t *)0));
 
-  /* "_pyrpd.pyx":144
+  /* "source/_pyrpd.pyx":163
  *         """
  *         cdef wchar_t* c_dllname = PyUnicode_AsWideCharString(<PyObject*>dllname,<Py_ssize_t*>0)
- *         return self._rp.unload(c_dllname)             # <<<<<<<<<<<<<<
+ *         result = self._rp.unload(c_dllname)             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return result
+ */
+  __pyx_v_result = __pyx_v_self->_rp->unload(__pyx_v_c_dllname);
+
+  /* "source/_pyrpd.pyx":164
+ *         cdef wchar_t* c_dllname = PyUnicode_AsWideCharString(<PyObject*>dllname,<Py_ssize_t*>0)
+ *         result = self._rp.unload(c_dllname)
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "source/_pyrpd.pyx":165
+ *         result = self._rp.unload(c_dllname)
+ *         self.set_err_code()
+ *         return result             # <<<<<<<<<<<<<<
  * 
  *     def call(self,module_name:str, func_name:str, param:int) -> int:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_rp->unload(__pyx_v_c_dllname)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 144, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_result); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":131
- *         return self._rp.load(c_dllpath)
+  /* "source/_pyrpd.pyx":150
+ *         return result
  * 
  *     def unload(self,dllname:str) -> bool:             # <<<<<<<<<<<<<<
  *         """
@@ -2733,7 +3027,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.unload", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.unload", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2741,8 +3035,8 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":146
- *         return self._rp.unload(c_dllname)
+/* "source/_pyrpd.pyx":167
+ *         return result
  * 
  *     def call(self,module_name:str, func_name:str, param:int) -> int:             # <<<<<<<<<<<<<<
  *         """
@@ -2750,9 +3044,9 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_8unload(struct __pyx_obj_6_pyrpd_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_11call(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_10call[] = "\n        call remote function by module name, function name and param.\n        Parameters\n        ----------\n        module_name : str\n            module name.\n        func_name:\n            function name located in the module\n        param:\n            int or void*, always an integer in python\n\n        Returns\n        -------\n        int,void* or nullptr, always an integer in python.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_11call(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_13call(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_12call[] = "\n        call remote function by module name, function name and param.\n        Parameters\n        ----------\n        module_name : str\n            module name.\n        func_name:\n            function name located in the module\n        param:\n            int or void*, always an integer in python\n\n        Returns\n        -------\n        int,void* or nullptr, always an integer in python.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_13call(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_module_name = 0;
   PyObject *__pyx_v_func_name = 0;
   PyObject *__pyx_v_param = 0;
@@ -2787,17 +3081,17 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_11call(PyObject *__pyx_v_self, Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_func_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, 1); __PYX_ERR(1, 146, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, 1); __PYX_ERR(1, 167, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_param)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, 2); __PYX_ERR(1, 146, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, 2); __PYX_ERR(1, 167, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "call") < 0)) __PYX_ERR(1, 146, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "call") < 0)) __PYX_ERR(1, 167, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2812,15 +3106,15 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_11call(PyObject *__pyx_v_self, Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 146, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("call", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 167, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.call", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.call", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_module_name), (&PyUnicode_Type), 1, "module_name", 1))) __PYX_ERR(1, 146, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_func_name), (&PyUnicode_Type), 1, "func_name", 1))) __PYX_ERR(1, 146, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_10call(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_module_name, __pyx_v_func_name, __pyx_v_param);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_module_name), (&PyUnicode_Type), 1, "module_name", 1))) __PYX_ERR(1, 167, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_func_name), (&PyUnicode_Type), 1, "func_name", 1))) __PYX_ERR(1, 167, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_12call(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_module_name, __pyx_v_func_name, __pyx_v_param);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2831,9 +3125,10 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_11call(PyObject *__pyx_v_self, Py
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name, PyObject *__pyx_v_func_name, PyObject *__pyx_v_param) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_12call(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_module_name, PyObject *__pyx_v_func_name, PyObject *__pyx_v_param) {
   wchar_t *__pyx_v_c_module_name;
   wchar_t *__pyx_v_c_func_name;
+  __pyx_t_10_pyrpd_def_DWORD __pyx_v_result;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __pyx_t_10_pyrpd_def_ULONGLONG __pyx_t_1;
@@ -2843,41 +3138,61 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("call", 0);
 
-  /* "_pyrpd.pyx":162
+  /* "source/_pyrpd.pyx":183
  *         int,void* or nullptr, always an integer in python.
  *         """
  *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)             # <<<<<<<<<<<<<<
  *         cdef wchar_t* c_func_name = PyUnicode_AsWideCharString(<PyObject*>func_name,<Py_ssize_t*>0)
- *         return self._rp.call(c_module_name,c_func_name,param)
+ *         result = self._rp.call(c_module_name,c_func_name,param)
  */
   __pyx_v_c_module_name = PyUnicode_AsWideCharString(((PyObject *)__pyx_v_module_name), ((Py_ssize_t *)0));
 
-  /* "_pyrpd.pyx":163
+  /* "source/_pyrpd.pyx":184
  *         """
  *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
  *         cdef wchar_t* c_func_name = PyUnicode_AsWideCharString(<PyObject*>func_name,<Py_ssize_t*>0)             # <<<<<<<<<<<<<<
- *         return self._rp.call(c_module_name,c_func_name,param)
- * 
+ *         result = self._rp.call(c_module_name,c_func_name,param)
+ *         self.set_err_code()
  */
   __pyx_v_c_func_name = PyUnicode_AsWideCharString(((PyObject *)__pyx_v_func_name), ((Py_ssize_t *)0));
 
-  /* "_pyrpd.pyx":164
+  /* "source/_pyrpd.pyx":185
  *         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
  *         cdef wchar_t* c_func_name = PyUnicode_AsWideCharString(<PyObject*>func_name,<Py_ssize_t*>0)
- *         return self._rp.call(c_module_name,c_func_name,param)             # <<<<<<<<<<<<<<
+ *         result = self._rp.call(c_module_name,c_func_name,param)             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return result
+ */
+  __pyx_t_1 = __Pyx_PyInt_As_unsigned_PY_LONG_LONG(__pyx_v_param); if (unlikely((__pyx_t_1 == (unsigned PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(1, 185, __pyx_L1_error)
+  __pyx_v_result = __pyx_v_self->_rp->call(__pyx_v_c_module_name, __pyx_v_c_func_name, __pyx_t_1);
+
+  /* "source/_pyrpd.pyx":186
+ *         cdef wchar_t* c_func_name = PyUnicode_AsWideCharString(<PyObject*>func_name,<Py_ssize_t*>0)
+ *         result = self._rp.call(c_module_name,c_func_name,param)
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+  __pyx_t_2 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 186, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "source/_pyrpd.pyx":187
+ *         result = self._rp.call(c_module_name,c_func_name,param)
+ *         self.set_err_code()
+ *         return result             # <<<<<<<<<<<<<<
  * 
  *     def write(self,data:bytes) -> 'PyRData':
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_As_unsigned_PY_LONG_LONG(__pyx_v_param); if (unlikely((__pyx_t_1 == (unsigned PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(1, 164, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_rp->call(__pyx_v_c_module_name, __pyx_v_c_func_name, __pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 164, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_int(__pyx_v_result); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":146
- *         return self._rp.unload(c_dllname)
+  /* "source/_pyrpd.pyx":167
+ *         return result
  * 
  *     def call(self,module_name:str, func_name:str, param:int) -> int:             # <<<<<<<<<<<<<<
  *         """
@@ -2887,7 +3202,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_P
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.call", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.call", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2895,8 +3210,8 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_P
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":166
- *         return self._rp.call(c_module_name,c_func_name,param)
+/* "source/_pyrpd.pyx":189
+ *         return result
  * 
  *     def write(self,data:bytes) -> 'PyRData':             # <<<<<<<<<<<<<<
  *         """
@@ -2904,17 +3219,17 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_10call(struct __pyx_obj_6_pyrpd_P
  */
 
 /* Python wrapper */
-static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pw_6_pyrpd_10PyRProcess_13write(PyObject *__pyx_v_self, PyObject *__pyx_v_data); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_12write[] = "\n        write data to remote process.\n        Parameters\n        ----------\n        data: bytes\n            the data want to write.\n\n        Returns\n        -------\n        PyRData object.\n        ";
-static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pw_6_pyrpd_10PyRProcess_13write(PyObject *__pyx_v_self, PyObject *__pyx_v_data) {
+static struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_15write(PyObject *__pyx_v_self, PyObject *__pyx_v_data); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_14write[] = "\n        write data to remote process.\n        Parameters\n        ----------\n        data: bytes\n            the data want to write.\n\n        Returns\n        -------\n        PyRData object.\n        ";
+static struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_15write(PyObject *__pyx_v_self, PyObject *__pyx_v_data) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  struct __pyx_obj_6_pyrpd_PyRData *__pyx_r = 0;
+  struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("write (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_data), (&PyBytes_Type), 1, "data", 1))) __PYX_ERR(1, 166, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_12write(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_data));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_data), (&PyBytes_Type), 1, "data", 1))) __PYX_ERR(1, 189, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_14write(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject*)__pyx_v_data));
 
   /* function exit code */
   goto __pyx_L0;
@@ -2925,8 +3240,9 @@ static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pw_6_pyrpd_10PyRProcess_13write(P
   return __pyx_r;
 }
 
-static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_data) {
-  struct __pyx_obj_6_pyrpd_PyRData *__pyx_r = NULL;
+static struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_14write(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, PyObject *__pyx_v_data) {
+  struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_v_rdata = NULL;
+  struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -2937,24 +3253,23 @@ static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("write", 0);
 
-  /* "_pyrpd.pyx":178
+  /* "source/_pyrpd.pyx":201
  *         PyRData object.
  *         """
- *         return PyRData(self.hid,data,len(data))             # <<<<<<<<<<<<<<
- * 
- *     def read(self,unsigned int address,int length) -> bytes:
+ *         rdata = PyRData(self.hid,data,len(data))             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
+ *         return rdata
  */
-  __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hid); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hid); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 178, __pyx_L1_error)
+    __PYX_ERR(1, 201, __pyx_L1_error)
   }
-  __pyx_t_2 = PyBytes_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(1, 178, __pyx_L1_error)
-  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 178, __pyx_L1_error)
+  __pyx_t_2 = PyBytes_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(1, 201, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 178, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2965,15 +3280,37 @@ static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(s
   PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6_pyrpd_PyRData), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 178, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5pyrpd_6_pyrpd_PyRData), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_r = ((struct __pyx_obj_6_pyrpd_PyRData *)__pyx_t_3);
+  __pyx_v_rdata = ((struct __pyx_obj_5pyrpd_6_pyrpd_PyRData *)__pyx_t_3);
   __pyx_t_3 = 0;
+
+  /* "source/_pyrpd.pyx":202
+ *         """
+ *         rdata = PyRData(self.hid,data,len(data))
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return rdata
+ * 
+ */
+  __pyx_t_3 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 202, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "source/_pyrpd.pyx":203
+ *         rdata = PyRData(self.hid,data,len(data))
+ *         self.set_err_code()
+ *         return rdata             # <<<<<<<<<<<<<<
+ * 
+ *     def read(self,unsigned int address,int length) -> bytes:
+ */
+  __Pyx_XDECREF(((PyObject *)__pyx_r));
+  __Pyx_INCREF(((PyObject *)__pyx_v_rdata));
+  __pyx_r = __pyx_v_rdata;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":166
- *         return self._rp.call(c_module_name,c_func_name,param)
+  /* "source/_pyrpd.pyx":189
+ *         return result
  * 
  *     def write(self,data:bytes) -> 'PyRData':             # <<<<<<<<<<<<<<
  *         """
@@ -2985,16 +3322,17 @@ static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(s
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.write", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.write", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_rdata);
   __Pyx_XGIVEREF((PyObject *)__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":180
- *         return PyRData(self.hid,data,len(data))
+/* "source/_pyrpd.pyx":205
+ *         return rdata
  * 
  *     def read(self,unsigned int address,int length) -> bytes:             # <<<<<<<<<<<<<<
  *         """
@@ -3002,9 +3340,9 @@ static struct __pyx_obj_6_pyrpd_PyRData *__pyx_pf_6_pyrpd_10PyRProcess_12write(s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_15read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6_pyrpd_10PyRProcess_14read[] = "\n        read data from remote process by address.\n        Parameters\n        ----------\n        address: int\n            the begin address want to read.\n        length: int\n            the length want to read\n\n        Returns\n        -------\n        bytes.\n        ";
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_15read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_17read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_16read[] = "\n        read data from remote process by address.\n        Parameters\n        ----------\n        address: int\n            the begin address want to read.\n        length: int\n            the length want to read\n\n        Returns\n        -------\n        bytes.\n        ";
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_17read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   unsigned int __pyx_v_address;
   int __pyx_v_length;
   int __pyx_lineno = 0;
@@ -3036,11 +3374,11 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_15read(PyObject *__pyx_v_self, Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("read", 1, 2, 2, 1); __PYX_ERR(1, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("read", 1, 2, 2, 1); __PYX_ERR(1, 205, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read") < 0)) __PYX_ERR(1, 180, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read") < 0)) __PYX_ERR(1, 205, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3048,25 +3386,25 @@ static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_15read(PyObject *__pyx_v_self, Py
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_address = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_address == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 180, __pyx_L3_error)
-    __pyx_v_length = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_length == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 180, __pyx_L3_error)
+    __pyx_v_address = __Pyx_PyInt_As_unsigned_int(values[0]); if (unlikely((__pyx_v_address == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 205, __pyx_L3_error)
+    __pyx_v_length = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_length == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 205, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 180, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 205, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_14read(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_address, __pyx_v_length);
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_16read(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), __pyx_v_address, __pyx_v_length);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_address, int __pyx_v_length) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_16read(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, unsigned int __pyx_v_address, int __pyx_v_length) {
   unsigned char const *__pyx_v_data;
   PyObject *__pyx_v_bdata = 0;
   PyObject *__pyx_r = NULL;
@@ -3078,7 +3416,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("read", 0);
 
-  /* "_pyrpd.pyx":194
+  /* "source/_pyrpd.pyx":219
  *         bytes.
  *         """
  *         cdef const unsigned char* data = self._rp.read(address,length)             # <<<<<<<<<<<<<<
@@ -3087,49 +3425,60 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_P
  */
   __pyx_v_data = __pyx_v_self->_rp->read(__pyx_v_address, __pyx_v_length);
 
-  /* "_pyrpd.pyx":195
+  /* "source/_pyrpd.pyx":220
  *         """
  *         cdef const unsigned char* data = self._rp.read(address,length)
  *         cdef bdata = string(<char*>data,length)             # <<<<<<<<<<<<<<
  *         self._rp.free(<unsigned char*>data)
- *         return bytes(bdata)
+ *         self.set_err_code()
  */
   try {
     __pyx_t_1 = std::string(((char *)__pyx_v_data), __pyx_v_length);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 195, __pyx_L1_error)
+    __PYX_ERR(1, 220, __pyx_L1_error)
   }
-  __pyx_t_2 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 195, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 220, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_bdata = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "_pyrpd.pyx":196
+  /* "source/_pyrpd.pyx":221
  *         cdef const unsigned char* data = self._rp.read(address,length)
  *         cdef bdata = string(<char*>data,length)
  *         self._rp.free(<unsigned char*>data)             # <<<<<<<<<<<<<<
+ *         self.set_err_code()
  *         return bytes(bdata)
- * 
  */
   __pyx_v_self->_rp->free(((unsigned char *)__pyx_v_data));
 
-  /* "_pyrpd.pyx":197
+  /* "source/_pyrpd.pyx":222
  *         cdef bdata = string(<char*>data,length)
  *         self._rp.free(<unsigned char*>data)
+ *         self.set_err_code()             # <<<<<<<<<<<<<<
+ *         return bytes(bdata)
+ * 
+ */
+  __pyx_t_2 = ((struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self->__pyx_vtab)->set_err_code(__pyx_v_self); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 222, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "source/_pyrpd.pyx":223
+ *         self._rp.free(<unsigned char*>data)
+ *         self.set_err_code()
  *         return bytes(bdata)             # <<<<<<<<<<<<<<
  * 
- *     def __dealloc__(self):
+ *     cdef set_err_code(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_v_bdata); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 197, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_v_bdata); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "_pyrpd.pyx":180
- *         return PyRData(self.hid,data,len(data))
+  /* "source/_pyrpd.pyx":205
+ *         return rdata
  * 
  *     def read(self,unsigned int address,int length) -> bytes:             # <<<<<<<<<<<<<<
  *         """
@@ -3139,7 +3488,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_P
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_bdata);
@@ -3148,37 +3497,74 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_14read(struct __pyx_obj_6_pyrpd_P
   return __pyx_r;
 }
 
-/* "_pyrpd.pyx":199
+/* "source/_pyrpd.pyx":225
  *         return bytes(bdata)
+ * 
+ *     cdef set_err_code(self):             # <<<<<<<<<<<<<<
+ *         self._err_code = self._rp.last_error()
+ * 
+ */
+
+static PyObject *__pyx_f_5pyrpd_6_pyrpd_10PyRProcess_set_err_code(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("set_err_code", 0);
+
+  /* "source/_pyrpd.pyx":226
+ * 
+ *     cdef set_err_code(self):
+ *         self._err_code = self._rp.last_error()             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  __pyx_v_self->_err_code = __pyx_v_self->_rp->last_error();
+
+  /* "source/_pyrpd.pyx":225
+ *         return bytes(bdata)
+ * 
+ *     cdef set_err_code(self):             # <<<<<<<<<<<<<<
+ *         self._err_code = self._rp.last_error()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "source/_pyrpd.pyx":228
+ *         self._err_code = self._rp.last_error()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self._rp
  */
 
 /* Python wrapper */
-static void __pyx_pw_6_pyrpd_10PyRProcess_17__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_6_pyrpd_10PyRProcess_17__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_19__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_19__dealloc__(PyObject *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
-  __pyx_pf_6_pyrpd_10PyRProcess_16__dealloc__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self));
+  __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_18__dealloc__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_6_pyrpd_10PyRProcess_16__dealloc__(struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self) {
+static void __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_18__dealloc__(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "_pyrpd.pyx":200
+  /* "source/_pyrpd.pyx":229
  * 
  *     def __dealloc__(self):
  *         del self._rp             # <<<<<<<<<<<<<<
  */
   delete __pyx_v_self->_rp;
 
-  /* "_pyrpd.pyx":199
- *         return bytes(bdata)
+  /* "source/_pyrpd.pyx":228
+ *         self._err_code = self._rp.last_error()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self._rp
@@ -3195,19 +3581,19 @@ static void __pyx_pf_6_pyrpd_10PyRProcess_16__dealloc__(struct __pyx_obj_6_pyrpd
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_19__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_21__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_18__reduce_cython__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_20__reduce_cython__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_20__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3237,7 +3623,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_18__reduce_cython__(CYTHON_UNUSED
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3252,19 +3638,19 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_18__reduce_cython__(CYTHON_UNUSED
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6_pyrpd_10PyRProcess_21__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_23__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6_pyrpd_10PyRProcess_20__setstate_cython__(((struct __pyx_obj_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_22__setstate_cython__(((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6_pyrpd_PyRProcess *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_5pyrpd_6_pyrpd_10PyRProcess_22__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3294,7 +3680,7 @@ static PyObject *__pyx_pf_6_pyrpd_10PyRProcess_20__setstate_cython__(CYTHON_UNUS
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("_pyrpd.PyRProcess.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("pyrpd._pyrpd.PyRProcess.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3737,7 +4123,7 @@ static CYTHON_INLINE PyObject *__pyx_convert_PyByteArray_string_to_py_std__in_st
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_6_pyrpd_PyRData(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_5pyrpd_6_pyrpd_PyRData(PyTypeObject *t, PyObject *a, PyObject *k) {
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -3745,14 +4131,14 @@ static PyObject *__pyx_tp_new_6_pyrpd_PyRData(PyTypeObject *t, PyObject *a, PyOb
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_6_pyrpd_7PyRData_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_5pyrpd_6_pyrpd_7PyRData_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_6_pyrpd_PyRData(PyObject *o) {
+static void __pyx_tp_dealloc_5pyrpd_6_pyrpd_PyRData(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -3762,26 +4148,26 @@ static void __pyx_tp_dealloc_6_pyrpd_PyRData(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_6_pyrpd_7PyRData_5__dealloc__(o);
+    __pyx_pw_5pyrpd_6_pyrpd_7PyRData_5__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_6_pyrpd_PyRData[] = {
-  {"id", (PyCFunction)__pyx_pw_6_pyrpd_7PyRData_3id, METH_NOARGS, __pyx_doc_6_pyrpd_7PyRData_2id},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6_pyrpd_7PyRData_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6_pyrpd_7PyRData_9__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_5pyrpd_6_pyrpd_PyRData[] = {
+  {"id", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_7PyRData_3id, METH_NOARGS, __pyx_doc_5pyrpd_6_pyrpd_7PyRData_2id},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_7PyRData_7__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_7PyRData_9__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_6_pyrpd_PyRData = {
+static PyTypeObject __pyx_type_5pyrpd_6_pyrpd_PyRData = {
   PyVarObject_HEAD_INIT(0, 0)
-  "_pyrpd.PyRData", /*tp_name*/
-  sizeof(struct __pyx_obj_6_pyrpd_PyRData), /*tp_basicsize*/
+  "pyrpd._pyrpd.PyRData", /*tp_name*/
+  sizeof(struct __pyx_obj_5pyrpd_6_pyrpd_PyRData), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_6_pyrpd_PyRData, /*tp_dealloc*/
+  __pyx_tp_dealloc_5pyrpd_6_pyrpd_PyRData, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -3814,7 +4200,7 @@ static PyTypeObject __pyx_type_6_pyrpd_PyRData = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_6_pyrpd_PyRData, /*tp_methods*/
+  __pyx_methods_5pyrpd_6_pyrpd_PyRData, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -3824,7 +4210,7 @@ static PyTypeObject __pyx_type_6_pyrpd_PyRData = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_6_pyrpd_PyRData, /*tp_new*/
+  __pyx_tp_new_5pyrpd_6_pyrpd_PyRData, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -3844,8 +4230,10 @@ static PyTypeObject __pyx_type_6_pyrpd_PyRData = {
   0, /*tp_print*/
   #endif
 };
+static struct __pyx_vtabstruct_5pyrpd_6_pyrpd_PyRProcess __pyx_vtable_5pyrpd_6_pyrpd_PyRProcess;
 
-static PyObject *__pyx_tp_new_6_pyrpd_PyRProcess(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_5pyrpd_6_pyrpd_PyRProcess(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -3853,14 +4241,16 @@ static PyObject *__pyx_tp_new_6_pyrpd_PyRProcess(PyTypeObject *t, PyObject *a, P
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_6_pyrpd_10PyRProcess_1__cinit__(o, a, k) < 0)) goto bad;
+  p = ((struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *)o);
+  p->__pyx_vtab = __pyx_vtabptr_5pyrpd_6_pyrpd_PyRProcess;
+  if (unlikely(__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_6_pyrpd_PyRProcess(PyObject *o) {
+static void __pyx_tp_dealloc_5pyrpd_6_pyrpd_PyRProcess(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -3870,46 +4260,52 @@ static void __pyx_tp_dealloc_6_pyrpd_PyRProcess(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_6_pyrpd_10PyRProcess_17__dealloc__(o);
+    __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_19__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyObject *__pyx_getprop_6_pyrpd_10PyRProcess_pid(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6_pyrpd_10PyRProcess_3pid_1__get__(o);
+static PyObject *__pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_pid(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3pid_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_6_pyrpd_10PyRProcess_hid(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6_pyrpd_10PyRProcess_3hid_1__get__(o);
+static PyObject *__pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_last_error(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_10last_error_1__get__(o);
 }
 
-static PyMethodDef __pyx_methods_6_pyrpd_PyRProcess[] = {
-  {"GetProcAddress", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6_pyrpd_10PyRProcess_3GetProcAddress, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6_pyrpd_10PyRProcess_2GetProcAddress},
-  {"GetModuleHandle", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_5GetModuleHandle, METH_O, __pyx_doc_6_pyrpd_10PyRProcess_4GetModuleHandle},
-  {"load", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_7load, METH_O, __pyx_doc_6_pyrpd_10PyRProcess_6load},
-  {"unload", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_9unload, METH_O, __pyx_doc_6_pyrpd_10PyRProcess_8unload},
-  {"call", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6_pyrpd_10PyRProcess_11call, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6_pyrpd_10PyRProcess_10call},
-  {"write", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_13write, METH_O, __pyx_doc_6_pyrpd_10PyRProcess_12write},
-  {"read", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6_pyrpd_10PyRProcess_15read, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6_pyrpd_10PyRProcess_14read},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_19__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6_pyrpd_10PyRProcess_21__setstate_cython__, METH_O, 0},
+static PyObject *__pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_hid(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3hid_1__get__(o);
+}
+
+static PyMethodDef __pyx_methods_5pyrpd_6_pyrpd_PyRProcess[] = {
+  {"reopen", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_3reopen, METH_NOARGS, 0},
+  {"GetProcAddress", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_5GetProcAddress, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_4GetProcAddress},
+  {"GetModuleHandle", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_7GetModuleHandle, METH_O, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_6GetModuleHandle},
+  {"load", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_9load, METH_O, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_8load},
+  {"unload", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_11unload, METH_O, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_10unload},
+  {"call", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_13call, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_12call},
+  {"write", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_15write, METH_O, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_14write},
+  {"read", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_17read, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5pyrpd_6_pyrpd_10PyRProcess_16read},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_21__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_5pyrpd_6_pyrpd_10PyRProcess_23__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_6_pyrpd_PyRProcess[] = {
-  {(char *)"pid", __pyx_getprop_6_pyrpd_10PyRProcess_pid, 0, (char *)"\n        return process ID managed by this object\n        ", 0},
-  {(char *)"hid", __pyx_getprop_6_pyrpd_10PyRProcess_hid, 0, (char *)"\n        return the handle opened in the remote process\n        ", 0},
+static struct PyGetSetDef __pyx_getsets_5pyrpd_6_pyrpd_PyRProcess[] = {
+  {(char *)"pid", __pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_pid, 0, (char *)"\n        return process ID managed by this object\n        ", 0},
+  {(char *)"last_error", __pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_last_error, 0, (char *)0, 0},
+  {(char *)"hid", __pyx_getprop_5pyrpd_6_pyrpd_10PyRProcess_hid, 0, (char *)"\n        return the handle opened in the remote process\n        ", 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_6_pyrpd_PyRProcess = {
+static PyTypeObject __pyx_type_5pyrpd_6_pyrpd_PyRProcess = {
   PyVarObject_HEAD_INIT(0, 0)
-  "_pyrpd.PyRProcess", /*tp_name*/
-  sizeof(struct __pyx_obj_6_pyrpd_PyRProcess), /*tp_basicsize*/
+  "pyrpd._pyrpd.PyRProcess", /*tp_name*/
+  sizeof(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_6_pyrpd_PyRProcess, /*tp_dealloc*/
+  __pyx_tp_dealloc_5pyrpd_6_pyrpd_PyRProcess, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -3942,9 +4338,9 @@ static PyTypeObject __pyx_type_6_pyrpd_PyRProcess = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_6_pyrpd_PyRProcess, /*tp_methods*/
+  __pyx_methods_5pyrpd_6_pyrpd_PyRProcess, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_6_pyrpd_PyRProcess, /*tp_getset*/
+  __pyx_getsets_5pyrpd_6_pyrpd_PyRProcess, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -3952,7 +4348,7 @@ static PyTypeObject __pyx_type_6_pyrpd_PyRProcess = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_6_pyrpd_PyRProcess, /*tp_new*/
+  __pyx_tp_new_5pyrpd_6_pyrpd_PyRProcess, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -4043,20 +4439,21 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_param, __pyx_k_param, sizeof(__pyx_k_param), 0, 0, 1, 1},
   {&__pyx_n_s_pid, __pyx_k_pid, sizeof(__pyx_k_pid), 0, 0, 1, 1},
-  {&__pyx_n_s_pyrpd, __pyx_k_pyrpd, sizeof(__pyx_k_pyrpd), 0, 0, 1, 1},
+  {&__pyx_n_s_pyrpd__pyrpd, __pyx_k_pyrpd__pyrpd, sizeof(__pyx_k_pyrpd__pyrpd), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
-  {&__pyx_kp_s_src__pyrpd_pyx, __pyx_k_src__pyrpd_pyx, sizeof(__pyx_k_src__pyrpd_pyx), 0, 0, 1, 0},
+  {&__pyx_kp_s_source__pyrpd_pyx, __pyx_k_source__pyrpd_pyx, sizeof(__pyx_k_source__pyrpd_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 68, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 69, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4085,14 +4482,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "_pyrpd.pyx":68
+  /* "source/_pyrpd.pyx":69
  *         self._rp = new RProcess(pid)
  *         if self._rp.m_init == False:
  *             raise RuntimeError("create remote process falied.")             # <<<<<<<<<<<<<<
  *         self._pid = pid
- * 
+ *         self._err_code = 0
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_create_remote_process_falied); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 68, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_create_remote_process_falied); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
@@ -4115,25 +4512,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "_pyrpd.pyx":19
+  /* "source/_pyrpd.pyx":19
  *     PyObject* PyBytes_FromStringAndSize(const char* u, Py_ssize_t size)
  * 
  * def new_wechat() -> int:             # <<<<<<<<<<<<<<
  *     """
  *     Start a new WeChat process, return the process ID.
  */
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src__pyrpd_pyx, __pyx_n_s_new_wechat, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(1, 19, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_source__pyrpd_pyx, __pyx_n_s_new_wechat, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(1, 19, __pyx_L1_error)
 
-  /* "_pyrpd.pyx":25
+  /* "source/_pyrpd.pyx":25
  *     return core_def.new_wechat()
  * 
  * def new_wxwork() -> int:             # <<<<<<<<<<<<<<
  *     """
  *     Start a new WxWork process, return the process ID.
  */
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src__pyrpd_pyx, __pyx_n_s_new_wxwork, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 25, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_source__pyrpd_pyx, __pyx_n_s_new_wxwork, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 25, __pyx_L1_error)
 
-  /* "_pyrpd.pyx":31
+  /* "source/_pyrpd.pyx":31
  *     return core_def.new_wxwork()
  * 
  * def kill_handles(pid:int,handle_list:set) -> bool:             # <<<<<<<<<<<<<<
@@ -4143,7 +4540,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_s_pid, __pyx_n_s_handle_list, __pyx_n_s_handles); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src__pyrpd_pyx, __pyx_n_s_kill_handles, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 31, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_source__pyrpd_pyx, __pyx_n_s_kill_handles, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4197,26 +4594,29 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5pyrpd_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_6_pyrpd_PyRData.tp_print = 0;
+  __pyx_type_5pyrpd_6_pyrpd_PyRData.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6_pyrpd_PyRData.tp_dictoffset && __pyx_type_6_pyrpd_PyRData.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_6_pyrpd_PyRData.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_5pyrpd_6_pyrpd_PyRData.tp_dictoffset && __pyx_type_5pyrpd_6_pyrpd_PyRData.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_5pyrpd_6_pyrpd_PyRData.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRData, (PyObject *)&__pyx_type_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
-  __pyx_ptype_6_pyrpd_PyRData = &__pyx_type_6_pyrpd_PyRData;
-  if (PyType_Ready(&__pyx_type_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRData, (PyObject *)&__pyx_type_5pyrpd_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5pyrpd_6_pyrpd_PyRData) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_ptype_5pyrpd_6_pyrpd_PyRData = &__pyx_type_5pyrpd_6_pyrpd_PyRData;
+  __pyx_vtabptr_5pyrpd_6_pyrpd_PyRProcess = &__pyx_vtable_5pyrpd_6_pyrpd_PyRProcess;
+  __pyx_vtable_5pyrpd_6_pyrpd_PyRProcess.set_err_code = (PyObject *(*)(struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess *))__pyx_f_5pyrpd_6_pyrpd_10PyRProcess_set_err_code;
+  if (PyType_Ready(&__pyx_type_5pyrpd_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_6_pyrpd_PyRProcess.tp_print = 0;
+  __pyx_type_5pyrpd_6_pyrpd_PyRProcess.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6_pyrpd_PyRProcess.tp_dictoffset && __pyx_type_6_pyrpd_PyRProcess.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_6_pyrpd_PyRProcess.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_5pyrpd_6_pyrpd_PyRProcess.tp_dictoffset && __pyx_type_5pyrpd_6_pyrpd_PyRProcess.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_5pyrpd_6_pyrpd_PyRProcess.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRProcess, (PyObject *)&__pyx_type_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
-  __pyx_ptype_6_pyrpd_PyRProcess = &__pyx_type_6_pyrpd_PyRProcess;
+  if (__Pyx_SetVtable(__pyx_type_5pyrpd_6_pyrpd_PyRProcess.tp_dict, __pyx_vtabptr_5pyrpd_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRProcess, (PyObject *)&__pyx_type_5pyrpd_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5pyrpd_6_pyrpd_PyRProcess) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_ptype_5pyrpd_6_pyrpd_PyRProcess = &__pyx_type_5pyrpd_6_pyrpd_PyRProcess;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4441,14 +4841,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main__pyrpd) {
+  if (__pyx_module_is_main_pyrpd___pyrpd) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "_pyrpd")) {
-      if (unlikely(PyDict_SetItemString(modules, "_pyrpd", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "pyrpd._pyrpd")) {
+      if (unlikely(PyDict_SetItemString(modules, "pyrpd._pyrpd", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -4469,43 +4869,43 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "_pyrpd.pyx":19
+  /* "source/_pyrpd.pyx":19
  *     PyObject* PyBytes_FromStringAndSize(const char* u, Py_ssize_t size)
  * 
  * def new_wechat() -> int:             # <<<<<<<<<<<<<<
  *     """
  *     Start a new WeChat process, return the process ID.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6_pyrpd_1new_wechat, NULL, __pyx_n_s_pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 19, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pyrpd_6_pyrpd_1new_wechat, NULL, __pyx_n_s_pyrpd__pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_new_wechat, __pyx_t_1) < 0) __PYX_ERR(1, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "_pyrpd.pyx":25
+  /* "source/_pyrpd.pyx":25
  *     return core_def.new_wechat()
  * 
  * def new_wxwork() -> int:             # <<<<<<<<<<<<<<
  *     """
  *     Start a new WxWork process, return the process ID.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6_pyrpd_3new_wxwork, NULL, __pyx_n_s_pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pyrpd_6_pyrpd_3new_wxwork, NULL, __pyx_n_s_pyrpd__pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_new_wxwork, __pyx_t_1) < 0) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "_pyrpd.pyx":31
+  /* "source/_pyrpd.pyx":31
  *     return core_def.new_wxwork()
  * 
  * def kill_handles(pid:int,handle_list:set) -> bool:             # <<<<<<<<<<<<<<
  *     """
  *     Close the handle according to the handle name
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6_pyrpd_5kill_handles, NULL, __pyx_n_s_pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pyrpd_6_pyrpd_5kill_handles, NULL, __pyx_n_s_pyrpd__pyrpd); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_kill_handles, __pyx_t_1) < 0) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "_pyrpd.pyx":1
+  /* "source/_pyrpd.pyx":1
  * #-*-coding: utf-8-*-             # <<<<<<<<<<<<<<
  * #distutils: language = c++
  * #cython:language_level=3
@@ -4530,11 +4930,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init _pyrpd", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init pyrpd._pyrpd", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init _pyrpd");
+    PyErr_SetString(PyExc_ImportError, "init pyrpd._pyrpd");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -5340,6 +5740,24 @@ __PYX_GOOD:
     Py_XDECREF(setstate);
     Py_XDECREF(setstate_cython);
     return ret;
+}
+
+/* SetVTable */
+static int __Pyx_SetVtable(PyObject *dict, void *vtable) {
+#if PY_VERSION_HEX >= 0x02070000
+    PyObject *ob = PyCapsule_New(vtable, 0, 0);
+#else
+    PyObject *ob = PyCObject_FromVoidPtr(vtable, 0);
+#endif
+    if (!ob)
+        goto bad;
+    if (PyDict_SetItem(dict, __pyx_n_s_pyx_vtable, ob) < 0)
+        goto bad;
+    Py_DECREF(ob);
+    return 0;
+bad:
+    Py_XDECREF(ob);
+    return -1;
 }
 
 /* TypeImport */

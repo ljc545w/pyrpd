@@ -62,11 +62,20 @@ cdef class PyRData:
 cdef class PyRProcess:
     cdef RProcess* _rp
     cdef int _pid
+    cdef unsigned int _err_code
     def __cinit__(self,unsigned int pid):
         self._rp = new RProcess(pid)
         if self._rp.m_init == False:
             raise RuntimeError("create remote process falied.")
         self._pid = pid
+        self._err_code = 0
+        
+    def reopen(self):
+        del self._rp
+        self._rp = new RProcess(self.pid)
+        if self._rp.m_init == False:
+            raise RuntimeError("create remote process falied.")
+        return True
     
     @property
     def pid(self) -> int:
@@ -74,6 +83,10 @@ cdef class PyRProcess:
         return process ID managed by this object
         """
         return self._pid
+        
+    @property
+    def last_error(self) -> int:
+        return self._err_code
     
     @property
     def hid(self) -> int:
@@ -96,7 +109,9 @@ cdef class PyRProcess:
         -------
         address for success and 0 for falied.
         """
-        return self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+        result = self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+        self.set_err_code()
+        return result
     
     def GetModuleHandle(self,module_name:str) -> int:
         """
@@ -111,7 +126,9 @@ cdef class PyRProcess:
         address for success and 0 for falied.
         """
         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
-        return self._rp.GetRemoteModuleHandle(c_module_name)
+        result = self._rp.GetRemoteModuleHandle(c_module_name)
+        self.set_err_code()
+        return result
         
     def load(self,dllpath:str) -> bool:
         """
@@ -126,7 +143,9 @@ cdef class PyRProcess:
         True for success and False for falied.
         """
         cdef wchar_t* c_dllpath = PyUnicode_AsWideCharString(<PyObject*>dllpath,<Py_ssize_t*>0)
-        return self._rp.load(c_dllpath)
+        result = self._rp.load(c_dllpath)
+        self.set_err_code()
+        return result
         
     def unload(self,dllname:str) -> bool:
         """
@@ -141,7 +160,9 @@ cdef class PyRProcess:
         True for success and False for falied.
         """
         cdef wchar_t* c_dllname = PyUnicode_AsWideCharString(<PyObject*>dllname,<Py_ssize_t*>0)
-        return self._rp.unload(c_dllname)
+        result = self._rp.unload(c_dllname)
+        self.set_err_code()
+        return result
         
     def call(self,module_name:str, func_name:str, param:int) -> int:
         """
@@ -161,7 +182,9 @@ cdef class PyRProcess:
         """
         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
         cdef wchar_t* c_func_name = PyUnicode_AsWideCharString(<PyObject*>func_name,<Py_ssize_t*>0)
-        return self._rp.call(c_module_name,c_func_name,param)
+        result = self._rp.call(c_module_name,c_func_name,param)
+        self.set_err_code()
+        return result
         
     def write(self,data:bytes) -> 'PyRData':
         """
@@ -175,7 +198,9 @@ cdef class PyRProcess:
         -------
         PyRData object.
         """
-        return PyRData(self.hid,data,len(data))
+        rdata = PyRData(self.hid,data,len(data))
+        self.set_err_code()
+        return rdata
         
     def read(self,unsigned int address,int length) -> bytes:
         """
@@ -194,7 +219,11 @@ cdef class PyRProcess:
         cdef const unsigned char* data = self._rp.read(address,length)
         cdef bdata = string(<char*>data,length)
         self._rp.free(<unsigned char*>data)
+        self.set_err_code()
         return bytes(bdata)
+        
+    cdef set_err_code(self):
+        self._err_code = self._rp.last_error()
     
     def __dealloc__(self):
         del self._rp

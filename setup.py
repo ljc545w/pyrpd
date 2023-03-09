@@ -13,7 +13,7 @@ define_macros=[("UNICODE",1),("_UNICODE",1),("_WINDOWS",1),("NDEBUG",1),("_PYTHO
 if sys.maxsize > 2 ** 32:
     define_macros.append(("_WIN64",1))
     
-with open("README.md","r") as f:
+with open("README.md","r",encoding = 'utf-8') as f:
     long_description = f.read()
 
 ext_modules = [
@@ -27,7 +27,7 @@ ext_modules = [
 
 setup(
     name="pyrpd",
-    version="1.0.1",
+    version="1.0.2",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Jack Li",
