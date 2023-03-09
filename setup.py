@@ -32,7 +32,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Jack Li",
     author_email="ljc545w@qq.com",
-    url='',
+    url='https://github.com/ljc545w/pyrpd',
     install_requires=[],
     license="MIT License",
     packages=find_packages(),
