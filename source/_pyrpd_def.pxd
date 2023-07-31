@@ -7,6 +7,7 @@ from libcpp.set cimport set
 from libcpp.string cimport string
 
 ctypedef unsigned int DWORD
+ctypedef unsigned long long size_t
 ctypedef unsigned long long ULONGLONG
 ctypedef void* HANDLE
 
@@ -17,8 +18,8 @@ cdef extern from "../../ntapi.cpp":
     pass
 
 cdef extern from "rpd.h" namespace "opener":
-    DWORD new_wechat()
-    DWORD new_wxwork()
+    DWORD new_wechat(const wchar_t* installPath)
+    DWORD new_wxwork(const wchar_t* installPath)
     bool kill_handles(DWORD pid, const set[string] handle_names)
     
 cdef extern from "rpd.h":
@@ -28,13 +29,13 @@ cdef extern from "rpd.h":
         
     cdef cppclass RProcess:
         RProcess(DWORD pid) except +
-        HANDLE GetHandle()
-        DWORD GetRemoteProcAddress(const char* dllname, const char* functionname)
-        DWORD GetRemoteModuleHandle(const wchar_t* module_name)
+        HANDLE GetProcess()
+        size_t GetProcAddress(const char* dllname, const char* functionname)
+        size_t GetModuleHandle(const wchar_t* module_name)
         bool load(const wchar_t* dllpath)
         bool unload(const wchar_t* dllname)
-        DWORD call(const wchar_t* module_name, const wchar_t* func_name,ULONGLONG param)
+        size_t call(const wchar_t* module_name, const wchar_t* func_name,ULONGLONG param)
         const unsigned char* read(DWORD address,int len)
         void free(unsigned char* data)
         DWORD last_error()
-        bool m_init
+        bool m_bInit

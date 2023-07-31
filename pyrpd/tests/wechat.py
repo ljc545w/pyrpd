@@ -2,7 +2,7 @@ import pyrpd
 
 class WeChat(pyrpd.PyRProcess):
     def __init__(self,pid,*args,**kwargs):
-        super().__init__()
+        super().__init__(pid,*args,**kwargs)
         
     @classmethod
     def new_wechat(cls):
