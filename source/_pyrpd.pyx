@@ -16,17 +16,19 @@ cdef extern from "Python.h":
     PyObject* PyUnicode_FromString(const char* u)
     PyObject* PyBytes_FromStringAndSize(const char* u, Py_ssize_t size)
     
-def new_wechat() -> int:
+def new_wechat(installPath:str="") -> int:
     """
     Start a new WeChat process, return the process ID.
     """
-    return core_def.new_wechat()
+    cdef wchar_t* c_install_path = PyUnicode_AsWideCharString(<PyObject*>installPath,<Py_ssize_t*>0)
+    return core_def.new_wechat(c_install_path)
     
-def new_wxwork() -> int:
+def new_wxwork(installPath:str="") -> int:
     """
     Start a new WxWork process, return the process ID.
     """
-    return core_def.new_wxwork()
+    cdef wchar_t* c_install_path = PyUnicode_AsWideCharString(<PyObject*>installPath,<Py_ssize_t*>0)
+    return core_def.new_wxwork(c_install_path)
     
 def kill_handles(pid:int,handle_list:set) -> bool:
     """
@@ -63,17 +65,20 @@ cdef class PyRProcess:
     cdef RProcess* _rp
     cdef int _pid
     cdef unsigned int _err_code
-    def __cinit__(self,unsigned int pid):
+    def __cinit__(self, unsigned int pid, *args, **kwargs):
         self._rp = new RProcess(pid)
-        if self._rp.m_init == False:
+        if self._rp.m_bInit == False:
             raise RuntimeError("create remote process falied.")
         self._pid = pid
         self._err_code = 0
+    
+    def __init__(self, pid, *args, **kwargs):
+        pass
         
     def reopen(self):
         del self._rp
         self._rp = new RProcess(self.pid)
-        if self._rp.m_init == False:
+        if self._rp.m_bInit == False:
             raise RuntimeError("create remote process falied.")
         return True
     
@@ -93,7 +98,7 @@ cdef class PyRProcess:
         """
         return the handle opened in the remote process
         """
-        return <unsigned int>self._rp.GetHandle()
+        return <unsigned int>self._rp.GetProcess()
     
     def GetProcAddress(self,dll_name:str,func_name:str) -> int:
         """
@@ -109,7 +114,7 @@ cdef class PyRProcess:
         -------
         address for success and 0 for falied.
         """
-        result = self._rp.GetRemoteProcAddress(dll_name.encode(),func_name.encode())
+        result = self._rp.GetProcAddress(dll_name.encode(),func_name.encode())
         self.set_err_code()
         return result
     
@@ -126,7 +131,7 @@ cdef class PyRProcess:
         address for success and 0 for falied.
         """
         cdef wchar_t* c_module_name = PyUnicode_AsWideCharString(<PyObject*>module_name,<Py_ssize_t*>0)
-        result = self._rp.GetRemoteModuleHandle(c_module_name)
+        result = self._rp.GetModuleHandle(c_module_name)
         self.set_err_code()
         return result
         
@@ -186,7 +191,7 @@ cdef class PyRProcess:
         self.set_err_code()
         return result
         
-    def write(self,data:bytes) -> 'PyRData':
+    def write(self,data:bytes) -> PyRData:
         """
         write data to remote process.
         Parameters
