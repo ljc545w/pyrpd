@@ -25,7 +25,7 @@ cdef extern from "rpd.h" namespace "opener":
 cdef extern from "rpd.h":
     cdef cppclass RData:
         RData(DWORD hid,unsigned char* data,unsigned int size) except +
-        DWORD id()
+        size_t id()
         
     cdef cppclass RProcess:
         RProcess(DWORD pid) except +
@@ -35,7 +35,7 @@ cdef extern from "rpd.h":
         bool load(const wchar_t* dllpath)
         bool unload(const wchar_t* dllname)
         size_t call(const wchar_t* module_name, const wchar_t* func_name,ULONGLONG param)
-        const unsigned char* read(DWORD address,int len)
+        const unsigned char* read(size_t address,int len)
         void free(unsigned char* data)
         DWORD last_error()
         bool m_bInit

@@ -56,7 +56,7 @@ cdef class PyRData:
         """
         return remote data begin address
         """
-        return self._rdata.id()
+        return <size_t>self._rdata.id()
         
     def __dealloc__(self):
         del self._rdata
@@ -207,7 +207,7 @@ cdef class PyRProcess:
         self.set_err_code()
         return rdata
         
-    def read(self,unsigned int address,int length) -> bytes:
+    def read(self,size_t address,int length) -> bytes:
         """
         read data from remote process by address.
         Parameters
