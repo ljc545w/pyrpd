@@ -30,13 +30,12 @@
             ]
         ],
         "depends": [
-            "..\\ntapi.cpp",
-            "..\\rpd.cpp",
-            "..\\rpd.h"
+            "source\\ntapi.cpp",
+            "source\\rpd.cpp",
+            "source\\rpd.h"
         ],
         "include_dirs": [
             "./source",
-            "../",
             "."
         ],
         "language": "c++",
@@ -1161,8 +1160,8 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include <set>
 #include <string.h>
 #include <string>
-#include "../../rpd.cpp"
-#include "../../ntapi.cpp"
+#include "./rpd.cpp"
+#include "./ntapi.cpp"
 #include "rpd.h"
 #include <stdio.h>
 #ifdef _OPENMP
@@ -1472,7 +1471,7 @@ struct __pyx_obj_5pyrpd_6_pyrpd_PyRProcess;
  * ctypedef unsigned long long ULONGLONG
  * ctypedef void* HANDLE             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "../../rpd.cpp":
+ * cdef extern from "./rpd.cpp":
  */
 typedef void *__pyx_t_10_pyrpd_def_HANDLE;
 

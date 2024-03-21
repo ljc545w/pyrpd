@@ -9,6 +9,8 @@ from setuptools import find_packages
 from distutils.extension import Extension
 from Cython.Build import cythonize
 
+__version__ = "1.0.5"
+
 define_macros=[("UNICODE",1),("_UNICODE",1),("_WINDOWS",1),("NDEBUG",1),("_PYTHON",1)]
 if sys.maxsize > 2 ** 32:
     define_macros.append(("_WIN64",1))
@@ -20,14 +22,14 @@ ext_modules = [
     Extension("pyrpd._pyrpd", 
               sources=["./source/_pyrpd.pyx"],
               libraries=["Advapi32"],
-              include_dirs=["../","."],
+              include_dirs=["./include","."],
               define_macros=define_macros,
               language="c++"),
     ]
 
 setup(
     name="pyrpd",
-    version="1.0.4",
+    version=__version__,
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Jack Li",

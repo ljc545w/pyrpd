@@ -1,5 +1,7 @@
 build/
+dist/
 pyrpd.egg-info/
 
 # py
 \__pycache__
+pyrpd/*.pyd

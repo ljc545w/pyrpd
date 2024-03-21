@@ -11,10 +11,10 @@ ctypedef unsigned long long size_t
 ctypedef unsigned long long ULONGLONG
 ctypedef void* HANDLE
 
-cdef extern from "../../rpd.cpp":
+cdef extern from "./rpd.cpp":
     pass
     
-cdef extern from "../../ntapi.cpp":
+cdef extern from "./ntapi.cpp":
     pass
 
 cdef extern from "rpd.h" namespace "opener":
