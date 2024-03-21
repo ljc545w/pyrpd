@@ -31,10 +31,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install twine
         pip install build
-    - name: Publish package
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+    - name: Build
       run: |
         python -m build
-        twine upload dist/* --skip-existing
+    - name: Publish distribution
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_PASSWORD }}
