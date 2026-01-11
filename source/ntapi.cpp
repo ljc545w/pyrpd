@@ -1,11 +1,11 @@
-﻿// #include "pch.h"
-#include "ntapi.h"
+﻿#include "ntapi.h"
 #include "rpd.h"
 #pragma comment(lib,"ntdll.lib")
 
 HMODULE hNtdll = ::GetModuleHandleW(reinterpret_cast<LPCTSTR>(L"ntdll.dll"));
 
 pNtQuerySystemInformation NtQuerySystemInformation = (pNtQuerySystemInformation)GetProcAddress(hNtdll, "NtQuerySystemInformation");
+pZwQueryInformationProcess ZwQueryInformationProcess = (pZwQueryInformationProcess)GetProcAddress(hNtdll, "ZwQueryInformationProcess");
 pNtDuplicateObject NtDuplicateObject = (pNtDuplicateObject)GetProcAddress(hNtdll, "NtDuplicateObject");
 pNtQueryObject NtQueryObject = (pNtQueryObject)GetProcAddress(hNtdll, "NtQueryObject");
 
@@ -103,6 +103,7 @@ PVOID GetSystem32ProcAddr(PCWSTR ObjectName, PCSTR procName)
 }
 #endif
 
+#ifdef _SYSTEM_HANDLE
 BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
     NTSTATUS status;
     PSYSTEM_HANDLE_INFORMATION handleInfo;
@@ -118,8 +119,13 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
     {
         handleInfoSize *= 2;
         PSYSTEM_HANDLE_INFORMATION tempinfo = (PSYSTEM_HANDLE_INFORMATION)realloc(handleInfo, (size_t)handleInfoSize);
-        if (tempinfo)
+        if (tempinfo) {
             handleInfo = tempinfo;
+        }
+        else
+        {
+            return false;
+        }
     }
     if (handleInfo == NULL) {
         return false;
@@ -130,7 +136,6 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
         m_hProcess = handleInfo->Handles[i];
         if (m_hProcess.ProcessId != m_dwProcessId)
             continue;
-
         processHandle = OpenProcess(PROCESS_DUP_HANDLE, FALSE, m_dwProcessId);
         if (processHandle != NULL)
         {
@@ -149,6 +154,10 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
                         if (objectTypeInfo != NULL) {
                             str = wstring(objectTypeInfo->Name.Buffer ? objectTypeInfo->Name.Buffer : L"");
                         }
+#ifdef _LIB
+                        std::string szStr = Converter::unicode_to_utf8(str.c_str());
+                        std::cout << "Mutant, " << (szStr.empty() ? "null" : szStr) << std::endl;
+#endif
                         if (isSetContainHandle(handlenames,str))
                         {
                             thao = true;
@@ -160,10 +169,25 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
                         if (objectTypeInfo != NULL) {
                             str = wstring(objectTypeInfo->Name.Buffer ? objectTypeInfo->Name.Buffer : L"");
                         }
+#ifdef _LIB
+                        std::string szStr = Converter::unicode_to_utf8(str.c_str());
+                        std::cout << "Semaphore, " << (szStr.empty() ? "null" : szStr) << std::endl;
+#endif
                         if (isSetContainHandle(handlenames, str))
                         {
                             thao = true;
                         }
+                    }
+                    else {
+#ifdef _LIB
+                        std::string classStr = Converter::unicode_to_utf8(str.c_str());
+                        NtQueryObject(dupHandle, ObjectNameInformation, objectTypeInfo, 0x1000, NULL);
+                        if (objectTypeInfo != NULL) {
+                            str = wstring(objectTypeInfo->Name.Buffer ? objectTypeInfo->Name.Buffer : L"");
+                        }
+                        std::string szStr = Converter::unicode_to_utf8(str.c_str());
+                        std::cout << classStr << ", " << (szStr.empty() ? "null" : szStr) << std::endl;
+#endif
                     }
                 }
                 CloseHandle(dupHandle);
@@ -175,15 +199,81 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
                     DuplicateHandle(h_another_proc, (HANDLE)m_hProcess.Handle, GetCurrentProcess(), &dupHandle, 0, FALSE, DUPLICATE_SAME_ACCESS | DUPLICATE_CLOSE_SOURCE); // ر      
                     CloseHandle(dupHandle);
                     CloseHandle(h_another_proc);
+#ifdef _LIB
+                    std::cout << "Close mutex handle success." << std::endl;
+#endif
                 }
             }
             CloseHandle(processHandle);
+        }
+        else {
+#ifdef _LIB
+            std::cout << "OpenProcess failed." << std::endl;
+#endif
         }
     }
     free(handleInfo);
     handleInfo = NULL;
     return thao;
 }
+#else
+BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames) {
+    NTSTATUS status;
+    HANDLE processHandle = NULL, dupHandle = NULL;
+    POBJECT_TYPE_INFORMATION objectTypeInfo = nullptr;
+    bool bFindHandle = false;
+    processHandle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_DUP_HANDLE | PROCESS_SUSPEND_RESUME, FALSE, m_dwProcessId);
+    DWORD handlecount = 0;
+    DWORD enumcount = 0;
+    if (!processHandle)
+        return false;
+    status = ZwQueryInformationProcess(processHandle, ProcessHandleCount, &handlecount, sizeof(handlecount), NULL);
+    for (DWORD64 i = 0; i < 400000; i += 4)
+    {
+        bool bNeedClose = false;
+        if (i == 0)
+            continue;
+        if (DuplicateHandle(processHandle, (HANDLE)i, GetCurrentProcess(), &dupHandle, 0, FALSE, DUPLICATE_SAME_ACCESS))
+        {
+            objectTypeInfo = (POBJECT_TYPE_INFORMATION)malloc(0x2000);
+            if (NtQueryObject(dupHandle, ObjectTypeInformation, objectTypeInfo, 0x1000, NULL) == 0)
+            {
+                std::wstring swzHandleType;
+                std::wstring swzHandleName;
+                if (objectTypeInfo != NULL)
+                    swzHandleType = wstring(objectTypeInfo->Name.Buffer);
+                if (swzHandleType == L"Mutant" || swzHandleType == L"Semaphore")
+                {
+                    NtQueryObject(dupHandle, ObjectNameInformation, objectTypeInfo, 0x1000, NULL);
+                    if (objectTypeInfo != NULL)
+                        swzHandleName = wstring(objectTypeInfo->Name.Buffer ? objectTypeInfo->Name.Buffer : L"");
+                }
+                if (isSetContainHandle(handlenames, swzHandleName)) {
+                    bNeedClose = true;
+                    bFindHandle = true;
+                }
+            }
+            CloseHandle(dupHandle);
+            dupHandle = NULL;
+            free(objectTypeInfo);
+            objectTypeInfo = NULL;
+            if (bNeedClose)
+            {
+                HANDLE h_another_proc = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_DUP_HANDLE | PROCESS_SUSPEND_RESUME, FALSE, m_dwProcessId);
+                if (h_another_proc) {
+                    DuplicateHandle(h_another_proc, (HANDLE)i, GetCurrentProcess(), &dupHandle, 0, FALSE, DUPLICATE_SAME_ACCESS | DUPLICATE_CLOSE_SOURCE);
+                    if(dupHandle)
+                        CloseHandle(dupHandle);
+                    CloseHandle(h_another_proc);
+                }
+                break;
+            }
+        }
+    }
+    CloseHandle(processHandle);
+    return bFindHandle;
+}
+#endif
 
 BOOL CloseProcessHandle(DWORD m_dwProcessId, const wstring& handle_name) {
     set<wstring> handle_names;

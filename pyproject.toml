@@ -1,5 +1,26 @@
 [build-system]
-# These are the assumed default build requirements from pip:
-# https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
 requires = ["setuptools>=40.8.0", "wheel", "Cython>=3.0.0"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyrpd"
+version = "1.0.6"
+dependencies = []
+requires-python = ">=3.8"
+authors = [
+    {name = "Jack Li", email = "ljc545w@qq.com"},
+]
+license = "MIT"
+license-files = ["LICENSE"]
+description = "Invoke remote functions by python."
+readme = "README.md"
+keywords = ["remote ipc", "debug"]
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python",
+]
+
+[project.urls]
+Repository = "https://github.com/ljc545w/pyrpd"

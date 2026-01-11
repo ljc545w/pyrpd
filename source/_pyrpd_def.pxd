@@ -20,6 +20,7 @@ cdef extern from "./ntapi.cpp":
 cdef extern from "rpd.h" namespace "opener":
     DWORD new_wechat(const wchar_t* installPath)
     DWORD new_wxwork(const wchar_t* installPath)
+    DWORD new_weixin(const wchar_t* installPath)
     bool kill_handles(DWORD pid, const set[string] handle_names)
     
 cdef extern from "rpd.h":

@@ -30,6 +30,13 @@ def new_wxwork(installPath:str="") -> int:
     cdef wchar_t* c_install_path = PyUnicode_AsWideCharString(<PyObject*>installPath,<Py_ssize_t*>0)
     return core_def.new_wxwork(c_install_path)
     
+def new_weixin(installPath:str="") -> int:
+    """
+    Start a new WxWork process, return the process ID.
+    """
+    cdef wchar_t* c_install_path = PyUnicode_AsWideCharString(<PyObject*>installPath,<Py_ssize_t*>0)
+    return core_def.new_weixin(c_install_path)
+    
 def kill_handles(pid:int,handle_list:set) -> bool:
     """
     Close the handle according to the handle name

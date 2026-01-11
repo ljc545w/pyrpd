@@ -5,9 +5,6 @@ include *.md
 # Include the license file
 include LICENSE
 
-# Include the data files
-#recursive-include data *
-
 # Include source files
 include source\_pyrpd.pyx
 include source\_pyrpd_def.pxd

@@ -243,6 +243,7 @@ typedef struct _PROCESS_BASIC_INFORMATION {
 typedef enum _PROCESSINFOCLASS {
     ProcessBasicInformation = 0,
     ProcessDebugPort = 7,
+    ProcessHandleCount = 20,
     ProcessWow64Information = 26,
     ProcessImageFileName = 27,
     ProcessBreakOnTermination = 29

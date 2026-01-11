@@ -1,4 +1,3 @@
-// #include "pch.h"
 #include "rpd.h"
 #include "ntapi.h"
 
@@ -199,7 +198,7 @@ tstring GetWeChatVersion()
 {
     BYTE pversion[4] = { 0 };
     GetUserRegInfo(reinterpret_cast<LPCTSTR>(_T("SOFTWARE\\Tencent\\WeChat")), 
-                   reinterpret_cast<LPCTSTR>(_T("CrashVersion")), 
+                   reinterpret_cast<LPCTSTR>(_T("Version")), 
                    (void*)pversion, 
                    sizeof(DWORD));
     TCHAR* temp = new TCHAR[20]();
@@ -213,7 +212,44 @@ tstring GetWeChatVersion()
 DWORD GetWeChatVersionInt() {
     DWORD pversion = 0;
     GetUserRegInfo(reinterpret_cast<LPCTSTR>(_T("SOFTWARE\\Tencent\\WeChat")),
-        reinterpret_cast<LPCTSTR>(_T("CrashVersion")),
+        reinterpret_cast<LPCTSTR>(_T("Version")),
+        (void*)&pversion,
+        sizeof(DWORD));
+    return pversion;
+}
+
+tstring GetWeixinInstallDir()
+{
+    TCHAR* szProductType = new TCHAR[MAX_PATH]();
+    GetUserRegInfo(reinterpret_cast<LPCTSTR>(_T("SOFTWARE\\Tencent\\Weixin")),
+        reinterpret_cast<LPCTSTR>(_T("InstallPath")),
+        (void*)szProductType,
+        MAX_PATH);
+    tstring wxdir(szProductType);
+    delete[] szProductType;
+    szProductType = NULL;
+    return wxdir.length() == 0 ? TEXT("") : wxdir;
+}
+
+tstring GetWeixinVersion()
+{
+    BYTE pversion[4] = { 0 };
+    GetUserRegInfo(reinterpret_cast<LPCTSTR>(_T("SOFTWARE\\Tencent\\Weixin")),
+        reinterpret_cast<LPCTSTR>(_T("Version")),
+        (void*)pversion,
+        sizeof(DWORD));
+    TCHAR* temp = new TCHAR[20]();
+    _stprintf_s(temp, 20, _T("%d.%d.%d.%d\0"), (int)(pversion[2] & 0xf), (int)(pversion[1] >> 4), ((int)pversion[1] & 0xf), (int)pversion[0]);
+    tstring verStr(temp);
+    delete[] temp;
+    temp = NULL;
+    return verStr;
+}
+
+DWORD GetWeixinVersionInt() {
+    DWORD pversion = 0;
+    GetUserRegInfo(reinterpret_cast<LPCTSTR>(_T("SOFTWARE\\Tencent\\Weixin")),
+        reinterpret_cast<LPCTSTR>(_T("Version")),
         (void*)&pversion,
         sizeof(DWORD));
     return pversion;
@@ -237,25 +273,10 @@ tstring GetWXWorkVersion() {
     return wxwork_v.length() == 0 ? TEXT("") : wxwork_v;
 }
 
-RemoteProcess::RemoteProcess(DWORD m_dwProcessId)
+RemoteProcess::RemoteProcess(DWORD dwProcessId)
 {
-    this->m_hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, m_dwProcessId);
-    if (!this->m_hProcess)
-        m_bInit = FALSE;
-    else
-    {
-        BOOL bWow64 = FALSE;
-        IsWow64Process(m_hProcess, &bWow64);
-        m_bIs64Bit = !bWow64;
-#ifndef _WIN64
-        if (m_bIs64Bit) { // 64bit process is not support
-            m_bInit = FALSE;
-            return;
-        }
-#endif
-        this->m_dwProcessId = m_dwProcessId;
-        m_bInit = this->InitAsmFunc();
-    }
+    m_dwProcessId = dwProcessId;
+    ReOpen();
 }
 
 RemoteProcess::~RemoteProcess()
@@ -479,6 +500,43 @@ std::wstring RemoteProcess::GetProcessImageFileName() {
     return imageFile;
 }
 
+BOOL RemoteProcess::IsAlive() {
+    if (m_hProcess == NULL)
+        return FALSE;
+    DWORD flag = WaitForSingleObject(m_hProcess, 1);
+    if (flag == WAIT_TIMEOUT)
+        return TRUE;
+    return FALSE;
+}
+
+BOOL RemoteProcess::ReOpen() {
+    if (m_hProcess)
+        CloseHandle(m_hProcess);
+    if (m_dwProcessId == 0) {
+        m_bInit = FALSE;
+        return FALSE;
+    }
+    m_hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, m_dwProcessId);
+    if (m_hProcess == NULL) {
+        m_bInit = FALSE;
+        return FALSE;
+    }
+    else
+    {
+        BOOL bWow64 = FALSE;
+        IsWow64Process(m_hProcess, &bWow64);
+        m_bIs64Bit = !bWow64;
+#ifndef _WIN64
+        if (m_bIs64Bit) { // 64bit process is not support
+            m_bInit = FALSE;
+            return FALSE;
+        }
+#endif
+        m_bInit = this->InitAsmFunc();
+    }
+    return m_bInit;
+}
+
 size_t RemoteProcess::GetProcAddress(LPCSTR dllname, LPCSTR functionname)
 {
     if (!m_pAsmGetProcAddressFunc || !m_hProcess)
@@ -509,7 +567,36 @@ size_t RemoteProcess::GetProcAddress(LPCSTR dllname, LPCSTR functionname)
     return procAddr;
 }
 
-DWORD opener::new_wechat(const LPCTSTR installPath)
+size_t RemoteProcess::GetNonameProcAddress(LPCSTR dllname, int fid)
+{
+    if (!m_pAsmGetProcAddressFunc || !m_hProcess)
+        return 0;
+    RemoteData<LPSTR> r_modulename(m_hProcess, const_cast<LPSTR>(dllname), TEXTLENGTHA(dllname));
+    size_t procAddr = 0;
+#ifndef _WIN64
+    DWORD params[2] = { 0 };
+    params[0] = (DWORD)r_modulename.GetAddr();
+    params[1] = (DWORD)fid;
+    RemoteData<DWORD*> r_params(m_hProcess, &params[0], sizeof(params));
+    procAddr = CreateRemoteThread(m_pAsmGetProcAddressFunc, r_params.GetAddr());
+#else
+    if (!m_bIs64Bit) {
+        DWORD params[2] = { 0 };
+        params[0] = (DWORD)r_modulename.GetAddr();
+        params[1] = (DWORD)fid;
+        RemoteData<DWORD*> r_params(m_hProcess, &params[0], sizeof(params));
+        procAddr = CreateRemoteThread(m_pAsmGetProcAddressFunc, r_params.GetAddr());
+    }
+    else {
+        size_t params[2] = { (size_t)r_modulename.GetAddr(), (size_t)fid };
+        RemoteData<size_t*> r_params(m_hProcess, &params[0], sizeof(params));
+        procAddr = CreateRemoteThread(m_pAsmGetProcAddressFunc, r_params.GetAddr());
+    }
+#endif
+    return procAddr;
+}
+
+DWORD opener::new_wechat(const LPCTSTR installPath, const LPCTSTR extraStartParam)
 {
     CloseMutexHandle(reinterpret_cast<LPCTSTR>(L"WeChat.exe"), L"_WeChat_App_Instance_Identity_Mutex_Name");
     Sleep(200);
@@ -526,12 +613,15 @@ DWORD opener::new_wechat(const LPCTSTR installPath)
     if (_taccess(szAppName.c_str(), 0) == -1) {
         return 0;
     }
+    if (extraStartParam)
+        szAppName = L"\"" + szAppName + L"\" " + tstring(extraStartParam);
     STARTUPINFO StartInfo;
     ZeroMemory(&StartInfo, sizeof(StartInfo));
     PROCESS_INFORMATION procStruct;
     ZeroMemory(&procStruct, sizeof(procStruct));
     StartInfo.cb = sizeof(STARTUPINFO);
-    if (CreateProcess((LPCTSTR)szAppName.c_str(), NULL, NULL, NULL, FALSE, NORMAL_PRIORITY_CLASS, NULL, NULL, &StartInfo, &procStruct))
+    if (CreateProcessW(NULL, (LPTSTR)szAppName.c_str(), NULL, NULL, FALSE, NULL,
+        NULL, NULL, &StartInfo, &procStruct))
     {
         CloseHandle(procStruct.hProcess);
         CloseHandle(procStruct.hThread);
@@ -542,7 +632,7 @@ DWORD opener::new_wechat(const LPCTSTR installPath)
     return procStruct.dwProcessId;
 }
 
-DWORD opener::new_wxwork(const LPCTSTR installPath)
+DWORD opener::new_wxwork(const LPCTSTR installPath, const LPCTSTR extraStartParam)
 {
     set<wstring> mutex_handles = { L"Tencent.WeWork.ExclusiveObject",L"Tencent.WeWork.ExclusiveObjectInstance1" };
     CloseMutexHandle(reinterpret_cast<LPCTSTR>(L"WXWork.exe"), mutex_handles);
@@ -559,12 +649,55 @@ DWORD opener::new_wxwork(const LPCTSTR installPath)
     if (_taccess(szAppName.c_str(), 0) == -1) {
         return 0;
     }
+    if (extraStartParam)
+        szAppName = L"\"" + szAppName + L"\" " + tstring(extraStartParam);
     STARTUPINFO StartInfo;
     ZeroMemory(&StartInfo, sizeof(StartInfo));
     PROCESS_INFORMATION procStruct;
     ZeroMemory(&procStruct, sizeof(procStruct));
     StartInfo.cb = sizeof(STARTUPINFO);
-    if (CreateProcess((LPCTSTR)szAppName.c_str(), NULL, NULL, NULL, FALSE, NORMAL_PRIORITY_CLASS, NULL, NULL, &StartInfo, &procStruct))
+    if (CreateProcess(NULL, (LPTSTR)szAppName.c_str(), NULL, NULL, FALSE, NULL,
+        NULL, NULL, &StartInfo, &procStruct))
+    {
+        CloseHandle(procStruct.hProcess);
+        CloseHandle(procStruct.hThread);
+    }
+    if (procStruct.dwProcessId == 0)
+        return 0;
+    Sleep(1000);
+    return procStruct.dwProcessId;
+}
+
+DWORD opener::new_weixin(const LPCTSTR installPath, const LPCTSTR extraStartParam)
+{
+    std::set<std::wstring> swzMutexNames = {
+        L"XWeChat_App_Instance_Identity_Mutex_Name",
+        L"XWeChat_XWEB_Instance_Identity_Mutex_Name",
+    };
+    CloseMutexHandle(reinterpret_cast<LPCTSTR>(L"Weixin.exe"), swzMutexNames);
+    Sleep(200);
+    tstring szAppName;
+    if (installPath == nullptr || _tcsclen(installPath) == 0) {
+        szAppName = GetWeixinInstallDir();
+        if (szAppName.length() == 0)
+            return 0;
+        szAppName += TEXT("\\Weixin.exe");
+    }
+    else {
+        szAppName = tstring(installPath);
+    }
+    if (_taccess(szAppName.c_str(), 0) == -1) {
+        return 0;
+    }
+    if (extraStartParam)
+        szAppName = L"\"" + szAppName + L"\" " + tstring(extraStartParam);
+    STARTUPINFO StartInfo;
+    ZeroMemory(&StartInfo, sizeof(StartInfo));
+    PROCESS_INFORMATION procStruct;
+    ZeroMemory(&procStruct, sizeof(procStruct));
+    StartInfo.cb = sizeof(STARTUPINFO);
+    if (CreateProcessW(NULL, (LPTSTR)szAppName.c_str(), NULL, NULL, FALSE, NULL,
+        NULL, NULL, &StartInfo, &procStruct))
     {
         CloseHandle(procStruct.hProcess);
         CloseHandle(procStruct.hThread);
@@ -673,12 +806,31 @@ void RProcess::free(void* data) {
         delete[] (BYTE*)data;
 }
 
-DWORD rpd_StartWechat(const char* binPath) {
-    if (binPath) {
-        std::wstring swzBinPath = Converter::utf8_to_unicode(binPath);
-        return opener::new_wechat(swzBinPath.c_str());
-    }
-    return opener::new_wechat();
+DWORD rpd_StartWechat(const char* binPath, const char* extraStartParam) {
+    std::wstring swzBinPath, swzExtraStartParam;
+    if (binPath)
+        swzBinPath = Converter::utf8_to_unicode(binPath);
+    if (extraStartParam)
+        swzExtraStartParam = Converter::utf8_to_unicode(extraStartParam);
+    return opener::new_wechat((swzBinPath.length() > 0) ? swzBinPath.c_str() : nullptr, (swzExtraStartParam.length() > 0) ? swzExtraStartParam.c_str() : nullptr);
+}
+
+DWORD rpd_StartWeixin(const char* binPath, const char* extraStartParam) {
+    std::wstring swzBinPath, swzExtraStartParam;
+    if (binPath)
+        swzBinPath = Converter::utf8_to_unicode(binPath);
+    if (extraStartParam)
+        swzExtraStartParam = Converter::utf8_to_unicode(extraStartParam);
+    return opener::new_weixin((swzBinPath.length() > 0) ? swzBinPath.c_str() : nullptr, (swzExtraStartParam.length() > 0) ? swzExtraStartParam.c_str() : nullptr);
+}
+
+DWORD rpd_StartWxwork(const char* binPath, const char* extraStartParam) {
+    std::wstring swzBinPath, swzExtraStartParam;
+    if (binPath)
+        swzBinPath = Converter::utf8_to_unicode(binPath);
+    if (extraStartParam)
+        swzExtraStartParam = Converter::utf8_to_unicode(extraStartParam);
+    return opener::new_wxwork((swzBinPath.length() > 0) ? swzBinPath.c_str() : nullptr, (swzExtraStartParam.length() > 0) ? swzExtraStartParam.c_str() : nullptr);
 }
 
 size_t rpd_LoadLibrary(DWORD m_dwProcessId, const char* modulePath) {
