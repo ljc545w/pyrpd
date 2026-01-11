@@ -11,8 +11,9 @@
 
 // 如果需要，可以将这些定义为导出函数
 namespace opener {
-    DWORD new_wechat(const LPCTSTR installPath = nullptr);
-    DWORD new_wxwork(const LPCTSTR installPath = nullptr);
+    DWORD new_wechat(const LPCTSTR installPath = nullptr, const LPCTSTR extraStartParam = nullptr);
+    DWORD new_wxwork(const LPCTSTR installPath = nullptr, const LPCTSTR extraStartParam = nullptr);
+    DWORD new_weixin(const LPCTSTR installPath = nullptr, const LPCTSTR extraStartParam = nullptr);
     size_t load(DWORD m_dwProcessId, const wchar_t* dllpath);
     BOOL unload(DWORD m_dwProcessId, const wchar_t* dllname);
     BOOL kill_handles(DWORD m_dwProcessId, const set<wstring>& handle_names);
@@ -24,15 +25,19 @@ namespace opener {
 class RemoteProcess
 {
 public:
-    RemoteProcess(DWORD m_dwProcessId);
+    RemoteProcess(DWORD dwProcessId);
     ~RemoteProcess();
-    HANDLE GetProcess() { return this->m_hProcess; }
+    HANDLE GetProcess() const { return this->m_hProcess; }
     virtual size_t GetProcAddress(LPCSTR dllname, LPCSTR functionname);
+    virtual size_t GetNonameProcAddress(LPCSTR dllname, int fid);
     virtual size_t GetModuleHandle(LPCWSTR module_name);
     virtual size_t CreateRemoteThread(PVOID funcAddr, LPVOID params);
     virtual size_t LoadLibrary(LPCWSTR module_path);
     virtual size_t FreeLibrary(size_t hModule);
     virtual std::wstring GetProcessImageFileName();
+    virtual BOOL IsAlive();
+    virtual BOOL ReOpen();
+    virtual BOOL Is64BitProcess() { return m_bIs64Bit; };
 public:
     BOOL m_bInit = FALSE;
 
@@ -79,7 +84,9 @@ public:
 #ifdef __cplusplus
 extern "C" {
 #endif
-    _exported DWORD rpd_StartWechat(const char* binPath);
+    _exported DWORD rpd_StartWechat(const char* binPath, const char* extraStartParam);
+    _exported DWORD rpd_StartWxwork(const char* binPath, const char* extraStartParam);
+    _exported DWORD rpd_StartWeixin(const char* binPath, const char* extraStartParam);
     _exported size_t rpd_LoadLibrary(DWORD m_dwProcessId, const char* modulePath);
     _exported BOOL rpd_FreeLibrary(DWORD m_dwProcessId, const char* moduleName);
     _exported size_t rpd_CreateRemoteThread(DWORD m_dwProcessId, const char* moduleName, const char* funcName, LPVOID params);

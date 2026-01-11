@@ -21,14 +21,6 @@ using namespace std;
 #define TEXTLENGTH TEXTLENGTHW
 #endif
 
-#if defined(CREATE_DLL)
-#define _exported __declspec(dllexport)      // creator of dll
-#elif defined(USE_DLL)
-#define _exported __declspec(dllimport)      // user of dll
-#else
-#define _exported                            // static lib creator or user
-#endif
-
 #ifdef _WIN64
 PVOID GetSystem32ProcAddr(PCWSTR ObjectName, PCSTR procName);
 #endif
@@ -38,7 +30,15 @@ BOOL CloseProcessHandle(DWORD m_dwProcessId, const set<wstring>& handlenames);
 BOOL CloseProcessHandle(DWORD m_dwProcessId, const wstring& handle_name);
 tstring GetWeChatVersion();
 tstring GetWeChatInstallDir();
+
 DWORD GetWeChatVersionInt();
+
+tstring GetWeixinVersion();
+tstring GetWeixinInstallDir();
+DWORD GetWeixinVersionInt();
+
+tstring GetWXWorkVersion();
+tstring GetWXWorkInstallDir();
 
 // 向远程进程写入数据
 template <typename T1, typename T2, typename T3>
